@@ -6,6 +6,9 @@ import { PERSONAL_INFO } from "@/lib/constants";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
+// Web3Forms Access Key - This is safe to expose on client-side
+const WEB3FORMS_ACCESS_KEY = "83a9b09f-86fd-45fe-b6ff-f8ed1c5e7f60";
+
 export default function Contact() {
     const [formData, setFormData] = useState({
         name: "",
@@ -28,29 +31,39 @@ export default function Contact() {
         setErrorMessage("");
 
         try {
-            const response = await fetch("/api/contact", {
+            // Direct submission to Web3Forms (more reliable than going through our API)
+            const response = await fetch("https://api.web3forms.com/submit", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    Accept: "application/json",
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({
+                    access_key: WEB3FORMS_ACCESS_KEY,
+                    name: formData.name,
+                    email: formData.email,
+                    subject: formData.subject || "New Contact Form Submission",
+                    message: formData.message,
+                    from_name: "Portfolio Contact Form",
+                }),
             });
 
             const result = await response.json();
 
-            if (response.ok && result.success) {
+            if (result.success) {
                 setStatus("success");
                 setFormData({ name: "", email: "", subject: "", message: "" });
                 // Reset to idle after 5 seconds
                 setTimeout(() => setStatus("idle"), 5000);
             } else {
                 setStatus("error");
-                setErrorMessage(result.error || "Something went wrong");
+                setErrorMessage(result.message || "Failed to send message");
                 setTimeout(() => setStatus("idle"), 5000);
             }
-        } catch {
+        } catch (err) {
             setStatus("error");
             setErrorMessage("Network error. Please try again.");
+            console.error("Contact form error:", err);
             setTimeout(() => setStatus("idle"), 5000);
         }
     };
@@ -226,8 +239,8 @@ export default function Contact() {
                                 type="submit"
                                 disabled={status === "loading"}
                                 className={`px-8 py-3 text-sm font-medium text-white rounded-lg transition-all duration-200 flex items-center gap-2 ${status === "loading"
-                                        ? "bg-blue-600/50 cursor-not-allowed"
-                                        : "bg-blue-600 hover:bg-blue-700 hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]"
+                                    ? "bg-blue-600/50 cursor-not-allowed"
+                                    : "bg-blue-600 hover:bg-blue-700 hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]"
                                     }`}
                             >
                                 {status === "loading" ? (
