@@ -1,0 +1,214 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Navbar from "@/components/Navbar";
+import ExperienceCard from "@/components/ExperienceCard";
+import ProjectCard from "@/components/ProjectCard";
+import CertificationSection from "@/components/CertificationSection";
+import TechStack from "@/components/TechStack";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
+import { PERSONAL_INFO, EXPERIENCES, PROJECTS } from "@/lib/constants";
+
+export default function Home() {
+  return (
+    <main className="min-h-screen bg-slate-950">
+      <Navbar />
+
+      {/* ========== HERO SECTION ========== */}
+      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+        {/* Background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-600/5 via-transparent to-transparent pointer-events-none" />
+
+        <div className="section-container text-center z-10 py-20">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            {/* Name - text-5xl hierarchy */}
+            <h1 className="text-hero text-slate-50 tracking-tight mb-4">
+              {PERSONAL_INFO.name.split(" ")[0]}{" "}
+              <span className="text-blue-500">{PERSONAL_INFO.name.split(" ").slice(1).join(" ")}</span>
+            </h1>
+
+            {/* Title */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+              className="text-xl sm:text-2xl text-slate-400 font-medium mb-6"
+            >
+              {PERSONAL_INFO.title}
+            </motion.p>
+
+            {/* Tagline - text-base */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              className="text-base text-slate-500 max-w-2xl mx-auto mb-10 leading-relaxed"
+            >
+              {PERSONAL_INFO.tagline}
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            >
+              <a
+                href="#projects"
+                className="px-8 py-3 text-base font-medium text-slate-50 bg-blue-600 hover:bg-blue-700 rounded-lg transition-all duration-200 hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]"
+              >
+                View Projects
+              </a>
+              <a
+                href="#contact"
+                className="px-8 py-3 text-base font-medium text-slate-400 border border-slate-700 hover:border-slate-500 hover:text-slate-50 rounded-lg transition-all duration-200"
+              >
+                Get in Touch
+              </a>
+            </motion.div>
+          </motion.div>
+
+          {/* Scroll Indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          >
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+              className="w-6 h-10 rounded-full border-2 border-slate-700 flex items-start justify-center p-2"
+            >
+              <div className="w-1 h-2 bg-slate-600 rounded-full" />
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ========== EXPERIENCE SECTION ========== */}
+      <section id="experience" className="py-24 bg-slate-900/30">
+        <div className="section-container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            {/* text-3xl section header */}
+            <h2 className="text-section text-slate-50 mb-2">
+              Work & Research
+            </h2>
+            <p className="text-base text-slate-400 mb-12 max-w-2xl">
+              Professional experience in AI research, technical leadership, and cross-functional collaboration.
+            </p>
+          </motion.div>
+
+          <div className="space-y-6">
+            {EXPERIENCES.map((exp, index) => (
+              <ExperienceCard
+                key={exp.id}
+                title={exp.title}
+                organization={exp.organization}
+                duration={exp.duration}
+                description={exp.description}
+                highlights={exp.highlights}
+                hasCertificates={exp.hasCertificates}
+                index={index}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========== PROJECTS SECTION ========== */}
+      <section id="projects" className="py-24">
+        <div className="section-container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-section text-slate-50 mb-2">
+              Selected Projects
+            </h2>
+            <p className="text-base text-slate-400 mb-12 max-w-2xl">
+              A collection of projects showcasing expertise in full-stack development, data structures, and machine learning.
+            </p>
+          </motion.div>
+
+          <div className="bento-grid">
+            {PROJECTS.map((project, index) => (
+              <ProjectCard
+                key={project.id}
+                title={project.title}
+                description={project.description}
+                tech={project.tech}
+                thumbnailKey={project.thumbnailKey}
+                githubKey={project.githubKey}
+                featured={project.featured}
+                index={index}
+                hasVideo={project.hasVideo}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========== CREDENTIALS SECTION ========== */}
+      <section id="credentials" className="py-24 bg-slate-900/30">
+        <div className="section-container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-section text-slate-50 mb-2">
+              Credentials
+            </h2>
+            <p className="text-base text-slate-400 mb-12 max-w-2xl">
+              Professional certifications and hackathon achievements in AI, algorithms, and software design.
+            </p>
+          </motion.div>
+
+          <CertificationSection />
+        </div>
+      </section>
+
+      {/* ========== TECH STACK SECTION ========== */}
+      <section id="techstack" className="py-24">
+        <div className="section-container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-section text-slate-50 mb-2">
+              Technical Stack
+            </h2>
+            <p className="text-base text-slate-400 mb-12 max-w-2xl">
+              Technologies and tools I work with to build scalable, efficient solutions.
+            </p>
+          </motion.div>
+
+          <TechStack />
+        </div>
+      </section>
+
+      {/* ========== CONTACT SECTION ========== */}
+      <Contact />
+
+      {/* ========== FOOTER ========== */}
+      <Footer />
+    </main>
+  );
+}

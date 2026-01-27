@@ -1,0 +1,247 @@
+@import "tailwindcss";
+
+/* ========== DESIGN SYSTEM VARIABLES ========== */
+:root {
+  /* Colors - Slate 950 Primary */
+  --background: #020617;
+  --background-secondary: rgba(15, 23, 42, 0.5);
+  --background-tertiary: #0f172a;
+  --foreground: #f8fafc;
+  --foreground-muted: #94a3b8;
+  --foreground-subtle: #64748b;
+
+  /* Accent - Blue 600 (Royal Blue) */
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-glow: rgba(37, 99, 235, 0.15);
+  --accent-glow-strong: rgba(37, 99, 235, 0.25);
+
+  /* Borders - Slate 800 */
+  --border: #1e293b;
+  --border-hover: rgba(37, 99, 235, 0.3);
+}
+
+/* ========== BASE STYLES ========== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========== SELECTION ========== */
+::selection {
+  background: rgba(37, 99, 235, 0.3);
+  color: #f8fafc;
+}
+
+/* ========== SCROLLBAR ========== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* ========== GLASSMORPHISM CARDS ========== */
+.glass-card {
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid #1e293b;
+  border-radius: 0.75rem;
+  transition: all 0.2s ease-out;
+}
+
+.glass-card:hover {
+  border-color: rgba(37, 99, 235, 0.3);
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.15);
+}
+
+/* ========== NAVBAR GLASSMORPHISM ========== */
+.glass-nav {
+  background: rgba(2, 6, 23, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(30, 41, 59, 0.5);
+}
+
+/* ========== GRADIENT ACCENT ========== */
+.gradient-accent {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+}
+
+.gradient-text-accent {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ========== HOVER EFFECTS (Pointer Devices Only) ========== */
+@media (hover: hover) and (pointer: fine) {
+  .hover-lift {
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.15);
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.15);
+  }
+
+  .hover-border-accent:hover {
+    border-color: rgba(37, 99, 235, 0.3);
+  }
+}
+
+/* Touch devices: no hover effects */
+@media (hover: none) {
+
+  .hover-lift,
+  .hover-glow {
+    transition: none;
+  }
+}
+
+/* ========== FOCUS STYLES ========== */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* ========== SECTION CONTAINER ========== */
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-container {
+    padding: 0 2rem;
+  }
+}
+
+/* ========== TYPOGRAPHY HIERARCHY ========== */
+.text-hero {
+  font-size: 3rem;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+@media (min-width: 640px) {
+  .text-hero {
+    font-size: 3.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .text-hero {
+    font-size: 4.5rem;
+  }
+}
+
+.text-section {
+  font-size: 1.875rem;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+@media (min-width: 640px) {
+  .text-section {
+    font-size: 2.25rem;
+  }
+}
+
+/* ========== BENTO GRID ========== */
+.bento-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ========== LINE CLAMP UTILITIES ========== */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ========== ACCENT UNDERLINE ANIMATION ========== */
+.nav-link-underline {
+  position: relative;
+}
+
+.nav-link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: #2563eb;
+  border-radius: 1px;
+  transition: width 0.2s ease-out;
+}
+
+.nav-link-underline:hover::after,
+.nav-link-underline.active::after {
+  width: 100%;
+}
+
+/* ========== CARD BASE (Legacy Support) ========== */
+.card {
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid #1e293b;
+  border-radius: 0.75rem;
+  transition: all 0.2s ease-out;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    border-color: rgba(37, 99, 235, 0.3);
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.15);
+  }
+}

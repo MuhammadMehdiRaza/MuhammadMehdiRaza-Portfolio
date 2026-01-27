@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect fill="#18181b" width="400" height="300"/>
+  <text x="200" y="150" font-family="system-ui" font-size="16" fill="#71717a" text-anchor="middle" dominant-baseline="middle">Certificate Placeholder</text>
+  <rect x="50" y="80" width="300" height="140" rx="8" fill="none" stroke="#27272a" stroke-width="2" stroke-dasharray="8,4"/>
+</svg>
