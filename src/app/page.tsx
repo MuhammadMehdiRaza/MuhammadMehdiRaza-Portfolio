@@ -1,14 +1,23 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
-import ExperienceCard from "@/components/ExperienceCard";
-import ProjectCard from "@/components/ProjectCard";
-import CertificationSection from "@/components/CertificationSection";
 import TechStack from "@/components/TechStack";
-import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { PERSONAL_INFO, EXPERIENCES, PROJECTS } from "@/lib/constants";
+
+// Dynamic imports for performance (code splitting)
+const ExperienceCard = dynamic(() => import("@/components/ExperienceCard"), {
+  loading: () => <div className="h-40 w-full bg-slate-900/50 animate-pulse rounded-xl" />,
+});
+const ProjectCard = dynamic(() => import("@/components/ProjectCard"), {
+  loading: () => <div className="aspect-video w-full bg-slate-900/50 animate-pulse rounded-xl" />,
+});
+const CertificationSection = dynamic(() => import("@/components/CertificationSection"), {
+  ssr: false,
+});
+const Contact = dynamic(() => import("@/components/Contact"), { ssr: false });
 
 export default function Home() {
   return (
@@ -27,9 +36,8 @@ export default function Home() {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             {/* Name - text-5xl hierarchy */}
-            <h1 className="text-hero text-slate-50 tracking-tight mb-4">
-              {PERSONAL_INFO.name.split(" ")[0]}{" "}
-              <span className="text-blue-500">{PERSONAL_INFO.name.split(" ").slice(1).join(" ")}</span>
+            <h1 className="text-hero text-blue-500 tracking-tight mb-4">
+              {PERSONAL_INFO.name}
             </h1>
 
             {/* Title */}
@@ -101,7 +109,6 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            {/* text-3xl section header */}
             <h2 className="text-section text-slate-50 mb-2">
               Work & Research
             </h2>
