@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { PROJECT_THUMBNAILS, GITHUB_LINKS, PROJECT_VIDEOS } from "@/lib/constants";
@@ -26,9 +26,33 @@ export default function ProjectCard({
     hasVideo = false,
 }: ProjectCardProps) {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isInView, setIsInView] = useState(false);
+    const [videoLoaded, setVideoLoaded] = useState(false);
+    const [videoError, setVideoError] = useState(false);
+    const cardRef = useRef<HTMLDivElement>(null);
+
     const thumbnail = PROJECT_THUMBNAILS[thumbnailKey];
     const githubLink = GITHUB_LINKS[githubKey];
     const videoSrc = hasVideo ? PROJECT_VIDEOS[thumbnailKey as keyof typeof PROJECT_VIDEOS] : null;
+
+    // Intersection Observer for lazy loading
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsInView(true);
+                    observer.disconnect();
+                }
+            },
+            { rootMargin: "100px", threshold: 0.1 }
+        );
+
+        if (cardRef.current) {
+            observer.observe(cardRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
 
     const handleCardClick = () => {
         if (hasVideo && videoSrc) {
@@ -43,6 +67,7 @@ export default function ProjectCard({
     return (
         <>
             <motion.div
+                ref={cardRef}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -51,19 +76,40 @@ export default function ProjectCard({
                 onClick={handleCardClick}
                 className={`group relative overflow-hidden rounded-xl bg-slate-900/50 backdrop-blur-md border border-slate-800 hover:border-blue-600/30 hover:shadow-[0_0_20px_rgba(37,99,235,0.15)] transition-all duration-200 ${hasVideo ? "cursor-pointer" : ""}`}
             >
-                {/* ========== Video/Image Container - aspect-video ========== */}
-                <div className="relative w-full aspect-video overflow-hidden rounded-t-xl flex items-center justify-center bg-black">
+                {/* ========== Video/Image Container - aspect-video with skeleton ========== */}
+                <div className="relative w-full aspect-video overflow-hidden rounded-t-xl bg-slate-800">
+                    {/* Skeleton/Placeholder while loading */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950 animate-pulse" />
+
                     {hasVideo && videoSrc ? (
                         <>
-                            {/* Video Preview - Autoplays muted as preview */}
-                            <video
-                                src={videoSrc}
-                                muted
-                                loop
-                                playsInline
-                                autoPlay
-                                className="absolute min-w-full min-h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform duration-500 group-hover:scale-110"
-                            />
+                            {/* Video Preview - Only load when in view */}
+                            {isInView && (
+                                <video
+                                    src={videoSrc}
+                                    muted
+                                    loop
+                                    playsInline
+                                    autoPlay
+                                    preload="none"
+                                    onLoadedData={() => setVideoLoaded(true)}
+                                    onError={() => setVideoError(true)}
+                                    className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-110 ${videoLoaded ? "opacity-100" : "opacity-0"}`}
+                                />
+                            )}
+
+                            {/* Show thumbnail as fallback if video fails or loading */}
+                            {(!videoLoaded || videoError) && (
+                                <Image
+                                    src={thumbnail}
+                                    alt={`${title} thumbnail`}
+                                    fill
+                                    className="object-cover z-10"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    priority={index < 2}
+                                />
+                            )}
+
                             {/* Play Button Overlay */}
                             <div className="absolute inset-0 flex items-center justify-center z-20 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                                 <div className="w-16 h-16 rounded-full bg-blue-600/90 flex items-center justify-center shadow-lg">
@@ -75,7 +121,7 @@ export default function ProjectCard({
                         </>
                     ) : (
                         <>
-                            {/* Fallback Pattern for Non-Video Cards */}
+                            {/* Background Pattern for Non-Video Cards */}
                             <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950">
                                 <svg className="absolute inset-0 w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
@@ -87,13 +133,14 @@ export default function ProjectCard({
                                 </svg>
                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-blue-600/20 rounded-full blur-3xl" />
                             </div>
-                            {/* Image - Same centering as video */}
+                            {/* Image with priority for first 2 cards */}
                             <Image
                                 src={thumbnail}
                                 alt={`${title} thumbnail`}
                                 fill
-                                className="absolute min-w-full min-h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform duration-500 group-hover:scale-110 z-10"
+                                className="object-cover transition-transform duration-500 group-hover:scale-110 z-10"
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                priority={index < 2}
                             />
                         </>
                     )}
@@ -101,7 +148,7 @@ export default function ProjectCard({
                     {/* Gradient Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent z-20 pointer-events-none" />
 
-                    {/* Action Buttons - GitHub & External ONLY */}
+                    {/* Action Buttons */}
                     <div className="absolute bottom-4 right-4 flex items-center gap-2 z-30">
                         <a
                             href={githubLink}
@@ -185,13 +232,24 @@ export default function ProjectCard({
                                 </button>
                             </div>
 
-                            {/* Video Player - Full controls */}
+                            {/* Video Player - Full controls with loading state */}
                             <div className="relative w-full aspect-video bg-black">
+                                {/* Loading indicator */}
+                                <div className="absolute inset-0 flex items-center justify-center bg-slate-900">
+                                    <div className="flex flex-col items-center gap-3">
+                                        <svg className="animate-spin w-8 h-8 text-blue-500" fill="none" viewBox="0 0 24 24">
+                                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                                        </svg>
+                                        <p className="text-slate-400 text-sm">Loading video...</p>
+                                    </div>
+                                </div>
                                 <video
                                     src={videoSrc}
                                     controls
                                     autoPlay
-                                    className="w-full h-full object-contain"
+                                    preload="auto"
+                                    className="absolute inset-0 w-full h-full object-contain z-10"
                                 >
                                     Your browser does not support the video tag.
                                 </video>

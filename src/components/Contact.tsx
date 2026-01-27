@@ -123,7 +123,7 @@ export default function Contact() {
                                             />
                                         </svg>
                                         <p className="text-green-400 text-sm font-medium">
-                                            Message sent successfully! I&apos;ll get back to you soon.
+                                            Thank you! Your message has been sent. I&apos;ll respond within 24-48 hours.
                                         </p>
                                     </motion.div>
                                 )}
