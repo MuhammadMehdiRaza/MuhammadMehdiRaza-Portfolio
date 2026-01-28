@@ -18,16 +18,28 @@ export const RESUME_LINK = "/certificates/Mehdi_Cv.pdf";
 // ========== KFUPM RESEARCH CERTIFICATE PATHS ==========
 export const RESEARCH_CERTIFICATES = [
   {
-    name: "Summer Research Program",
-    path: "/certificates/kfupm-cert-1.png",
+    id: 1,
+    title: "Inbound Summer Research Program",
+    subtitle: "AI Research Intern - KFUPM-SDAIA",
+    impact: "Optimized LLMs (Qwen/Phi/Meta Allam) using the DSPy framework for structured prompting",
+    organization: "KFUPM",
+    thumbnail: "/certificates/kfupm-cert-1.png",
   },
   {
-    name: "Research Skills Course",
-    path: "/certificates/kfupm-cert-2.png",
+    id: 2,
+    title: "Research Skills Certification",
+    subtitle: "Undergraduate Research Office",
+    impact: "10-hour intensive course on research methodologies and academic writing",
+    organization: "Deanship of Research",
+    thumbnail: "/certificates/kfupm-cert-2.png",
   },
   {
-    name: "JRCAI Training Certificate",
-    path: "/certificates/kfupm-cert-3.png",
+    id: 3,
+    title: "JRCAI Training Certificate",
+    subtitle: "SDAIA-KFUPM Joint Research Center",
+    impact: "8-week program on AI research under Dr. Shadi Abudalfa supervision",
+    organization: "JRCAI",
+    thumbnail: "/certificates/kfupm-cert-3.png",
   },
 ];
 
