@@ -18,16 +18,16 @@ export const RESUME_LINK = "/certificates/Mehdi_Cv.pdf";
 // ========== KFUPM RESEARCH CERTIFICATE PATHS ==========
 export const RESEARCH_CERTIFICATES = [
   {
-    name: "KFUPM Internship 2025",
-    path: "/certificates/Kfupm Internship 2025.pdf",
+    name: "Summer Research Program",
+    path: "/certificates/kfupm-cert-1.png",
   },
   {
-    name: "Research Course Certificate",
-    path: "/certificates/Kfupm Research Course Certificate .pdf",
+    name: "Research Skills Course",
+    path: "/certificates/kfupm-cert-2.png",
   },
   {
-    name: "JRC SDAIA Certificate",
-    path: "/certificates/Mr. Muhammad Mehdi Raza JRC SDAIA.pdf",
+    name: "JRCAI Training Certificate",
+    path: "/certificates/kfupm-cert-3.png",
   },
 ];
 
@@ -55,7 +55,8 @@ export const GITHUB_LINKS = {
 };
 
 // ========== HACKATHON CERTIFICATES ==========
-export const HACKATHON_CERTIFICATES_PDF = "/certificates/hackathon-achievements.pdf";
+// View-only path - using Google Docs Viewer to prevent download
+export const HACKATHON_CERTIFICATES_PDF = "/certificates/Hackathon Certificates.pdf";
 
 // ========== UNIVERSITY DOCUMENT ==========
 export const UNIVERSITY_DOCUMENT = "/certificates/University.pdf";
@@ -67,8 +68,8 @@ export const EXPERIENCES = [
     title: "AI Research Intern",
     organization: "KFUPM-SDAIA Joint Research Center",
     duration: "2024 - 2025",
-    description: "Focused on LLM optimization using Phi-mini and Qwen models. Implemented DSPy framework for structured prompting and model fine-tuning. Contributed to advanced research in language model efficiency.",
-    highlights: ["LLM Optimization", "Phi-mini", "Qwen", "DSPy Framework"],
+    description: "Focused on LLM optimization using Phi-mini, Qwen, and Meta Allam models. Implemented DSPy framework for structured prompting and model fine-tuning. Contributed to advanced research in language model efficiency.",
+    highlights: ["LLM Optimization", "Phi-mini", "Qwen", "Meta Allam", "DSPy Framework"],
     hasCertificates: true,
     type: "research",
   },
@@ -84,7 +85,7 @@ export const EXPERIENCES = [
   },
   {
     id: 3,
-    title: "Executive IT",
+    title: "Liaison Head",
     organization: "ASME GIKI",
     duration: "2023 - 2024",
     description: "Utilized society as a networking platform for multi-disciplinary collaboration and served as a Liaison Member for the All-Pak-Event, assisting in stakeholder coordination.",
@@ -150,14 +151,70 @@ export const PROJECTS = [
 
 // ========== CERTIFICATIONS DATA ==========
 export const COURSERA_CERTIFICATIONS = [
-  { name: "Advanced Learning Algorithms", issuer: "Coursera", year: "2025", path: "/certificates/Advanced Learning Algorithms.pdf" },
-  { name: "Artificial Intelligence Essentials", issuer: "Coursera", year: "2026", path: "/certificates/Artifical Intellgience Essentials.pdf" },
-  { name: "Design Patterns", issuer: "Coursera", year: "2026", path: "/certificates/Design Patterns.pdf" },
-  { name: "Introduction to Generative AI", issuer: "Coursera", year: "2025", path: "/certificates/Introduction to Generative Ai.pdf" },
-  { name: "Object Oriented Design", issuer: "Coursera", year: "2026", path: "/certificates/Object Oriented Design.pdf" },
-  { name: "Python for Data Science, AI and Development", issuer: "Coursera", year: "2026", path: "/certificates/Python for Data Science, AI and Development.pdf" },
-  { name: "Supervised Machine Learning", issuer: "Coursera", year: "2025", path: "/certificates/Supervised Machine Learning Regression and Classification.pdf" },
-  { name: "Technical Support Fundamentals", issuer: "Coursera", year: "2025", path: "/certificates/Technical Support Fundamentals.pdf" },
+  {
+    name: "Advanced Learning Algorithms",
+    issuer: "Coursera",
+    year: "2025",
+    shareUrl: "https://coursera.org/share/456dda1d3b9a0323a5648c21c354da43",
+    thumbnail: "/certificates/cert-advanced-learning.png",
+    tags: ["Neural Networks", "Deep Learning", "TensorFlow"]
+  },
+  {
+    name: "Artificial Intelligence Essentials",
+    issuer: "Coursera",
+    year: "2026",
+    shareUrl: "https://coursera.org/share/b5a73cd65ed1c235a5c701c439c9850c",
+    thumbnail: "/certificates/cert-ai-essentials.png",
+    tags: ["AI", "Machine Learning", "Fundamentals"]
+  },
+  {
+    name: "Design Patterns",
+    issuer: "Coursera",
+    year: "2026",
+    shareUrl: "https://coursera.org/share/a0c427d48a585f714d69e7dbccce9f47",
+    thumbnail: "/certificates/cert-design-patterns.png",
+    tags: ["OOP", "Software Design", "Java"]
+  },
+  {
+    name: "Introduction to Generative AI",
+    issuer: "Coursera",
+    year: "2025",
+    shareUrl: "https://coursera.org/share/16f7fe7b5a169d04e6257edf7e137fc0",
+    thumbnail: "/certificates/cert-gen-ai.png",
+    tags: ["Generative AI", "LLMs", "Prompts"]
+  },
+  {
+    name: "Object Oriented Design",
+    issuer: "Coursera",
+    year: "2026",
+    shareUrl: "https://coursera.org/share/111435148fe56cec27e59b65cf3e1e2a",
+    thumbnail: "/certificates/cert-ood.png",
+    tags: ["OOP", "UML", "Design Principles"]
+  },
+  {
+    name: "Python for Data Science, AI and Development",
+    issuer: "Coursera",
+    year: "2026",
+    shareUrl: "https://coursera.org/share/2dee1ed80c1f43105958cb23246749d0",
+    thumbnail: "/certificates/cert-python-ds.png",
+    tags: ["Python", "Data Science", "AI"]
+  },
+  {
+    name: "Supervised Machine Learning",
+    issuer: "Coursera",
+    year: "2025",
+    shareUrl: "https://coursera.org/share/b8fb7eb754f10d5ba0cebe6920e22c8c",
+    thumbnail: "/certificates/cert-supervised-ml.png",
+    tags: ["ML", "Regression", "Classification"]
+  },
+  {
+    name: "Technical Support Fundamentals",
+    issuer: "Coursera",
+    year: "2025",
+    shareUrl: "https://coursera.org/share/4f0bf91f0cc8a157f283d29cd12bd8bf",
+    thumbnail: "/certificates/cert-tech-support.png",
+    tags: ["IT Support", "Troubleshooting", "Networking"]
+  },
 ];
 
 export const HACKATHON_ACHIEVEMENTS = [
