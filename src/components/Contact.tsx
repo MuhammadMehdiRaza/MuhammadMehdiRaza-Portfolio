@@ -304,7 +304,7 @@ export default function Contact() {
                             </div>
                             <div>
                                 <h4 className="text-slate-50 font-medium">Email</h4>
-                                <p className="text-sm text-slate-400 group-hover:text-blue-400 transition-colors duration-200">
+                                <p className="text-sm text-slate-400 group-hover:text-blue-400 transition-colors duration-200 break-all">
                                     {PERSONAL_INFO.email}
                                 </p>
                             </div>
