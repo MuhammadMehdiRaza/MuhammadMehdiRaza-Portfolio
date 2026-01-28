@@ -31,7 +31,9 @@ export default function CertificationSection() {
                     {COURSERA_CERTIFICATIONS.map((cert, index) => (
                         <motion.a
                             key={cert.name}
-                            href={cert.path}
+                            href={`https://docs.google.com/viewer?url=${encodeURIComponent(
+                                `https://muhammadmehdiraza-portfolio.vercel.app${cert.path}`
+                            )}&embedded=true`}
                             target="_blank"
                             rel="noopener noreferrer"
                             initial={{ opacity: 0, y: 20 }}
@@ -123,7 +125,9 @@ export default function CertificationSection() {
                     transition={{ duration: 0.3, delay: 0.3 }}
                     viewport={{ once: true }}
                     whileHover={{ x: 4 }}
-                    href={HACKATHON_CERTIFICATES_PDF}
+                    href={`https://docs.google.com/viewer?url=${encodeURIComponent(
+                        `https://muhammadmehdiraza-portfolio.vercel.app${HACKATHON_CERTIFICATES_PDF}`
+                    )}&embedded=true`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 mt-6 text-sm text-blue-500 hover:text-blue-400 transition-colors duration-200"
