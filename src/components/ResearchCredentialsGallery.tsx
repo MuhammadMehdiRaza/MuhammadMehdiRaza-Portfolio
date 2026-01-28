@@ -81,22 +81,18 @@ export default function ResearchCredentialsGallery() {
                                 </div>
                             </div>
 
-                            {/* Card Content - Contains ALL Text */}
+                            {/* Card Content */}
                             <div className="p-4 flex-1 flex flex-col">
-                                {/* Title */}
                                 <h5 className="text-sm font-bold text-blue-400 line-clamp-2 mb-1">
                                     {cert.title}
                                 </h5>
-                                {/* Subtitle */}
                                 <p className="text-xs text-slate-400 mb-2">
                                     {cert.subtitle}
                                 </p>
-                                {/* Impact Description */}
                                 <p className="text-[11px] text-slate-500 leading-relaxed mb-3 line-clamp-2">
                                     {cert.impact}
                                 </p>
 
-                                {/* View Button */}
                                 <button
                                     onClick={() => openModal(cert)}
                                     className="mt-auto inline-flex items-center justify-center gap-2 w-full px-3 py-2.5 text-xs font-medium text-slate-300 bg-slate-800/80 hover:bg-blue-600 hover:text-white border border-slate-700 hover:border-blue-500 rounded-lg transition-all duration-200"
@@ -113,7 +109,7 @@ export default function ResearchCredentialsGallery() {
                 </div>
             </div>
 
-            {/* Fullscreen Image Modal - ONLY Image, No Text */}
+            {/* Clean Image Viewer Modal */}
             <AnimatePresence>
                 {selectedCert && (
                     <motion.div
@@ -122,15 +118,17 @@ export default function ResearchCredentialsGallery() {
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.15 }}
                         className="fixed inset-0 z-50"
-                        onClick={closeModal}
                     >
-                        {/* Heavy Backdrop */}
-                        <div className="absolute inset-0 bg-slate-950/95 backdrop-blur-2xl" />
+                        {/* Click-to-Exit Backdrop */}
+                        <div
+                            className="absolute inset-0 bg-slate-950/90 backdrop-blur-2xl cursor-pointer"
+                            onClick={closeModal}
+                        />
 
-                        {/* Fixed Close Button - Does NOT scroll */}
+                        {/* Fixed Close Button - Always Visible */}
                         <button
                             onClick={closeModal}
-                            className="fixed top-6 right-6 z-[60] w-12 h-12 flex items-center justify-center rounded-full bg-slate-800/90 hover:bg-red-600 border-2 border-slate-600 hover:border-red-500 text-white transition-all duration-200 shadow-2xl"
+                            className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[60] w-12 h-12 flex items-center justify-center rounded-full bg-slate-800/95 hover:bg-red-600 border-2 border-slate-600 hover:border-red-500 text-white transition-all duration-200 shadow-2xl backdrop-blur-sm"
                             aria-label="Close"
                         >
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -138,28 +136,40 @@ export default function ResearchCredentialsGallery() {
                             </svg>
                         </button>
 
-                        {/* Scrollable/Pannable Image Container */}
-                        <motion.div
-                            initial={{ scale: 0.9, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            exit={{ scale: 0.9, opacity: 0 }}
-                            transition={{ duration: 0.2 }}
-                            className="relative w-full h-full overflow-auto flex items-center justify-center p-4 sm:p-8"
-                            onClick={(e) => e.stopPropagation()}
-                        >
-                            {/* Certificate Image - Scrollable for fine print */}
-                            <div className="relative max-w-full max-h-[90vh] bg-white rounded-lg shadow-2xl overflow-hidden">
-                                <Image
-                                    src={selectedCert.thumbnail}
-                                    alt={selectedCert.title}
-                                    width={1200}
-                                    height={900}
-                                    priority
-                                    className="w-auto h-auto max-w-full max-h-[90vh] object-contain"
-                                    style={{ display: 'block' }}
-                                />
-                            </div>
-                        </motion.div>
+                        {/* Centered Image Container - Desktop */}
+                        {/* Scrollable Container - Mobile */}
+                        <div className="absolute inset-0 overflow-auto flex items-center justify-center p-4 sm:p-8">
+                            <motion.div
+                                initial={{ scale: 0.9, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                exit={{ scale: 0.9, opacity: 0 }}
+                                transition={{ duration: 0.2, ease: "easeOut" }}
+                                className="relative"
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                                {/* Royal Blue Glow Effect */}
+                                <div className="absolute -inset-1 bg-blue-500/20 rounded-lg blur-xl" />
+
+                                {/* Certificate Image */}
+                                <div className="relative bg-white rounded-lg shadow-2xl overflow-hidden border border-blue-500/30">
+                                    {/* Desktop: Contained | Mobile: Larger for scroll/pan */}
+                                    <Image
+                                        src={selectedCert.thumbnail}
+                                        alt={selectedCert.title}
+                                        width={1400}
+                                        height={1000}
+                                        priority
+                                        className="
+                                            block
+                                            w-[180vw] sm:w-auto
+                                            max-w-none sm:max-w-[90vw]
+                                            h-auto sm:max-h-[90vh]
+                                            object-contain
+                                        "
+                                    />
+                                </div>
+                            </motion.div>
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>
