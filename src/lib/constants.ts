@@ -207,10 +207,10 @@ export const FOOTER_NAV_LINKS = [
   { name: "Contact", href: "#contact" },
 ];
 
-// ========== SOCIAL LINKS (GitHub & LinkedIn only) ==========
+// ========== SOCIAL LINKS (GitHub & Phone) ==========
 export const SOCIAL_LINKS = [
   { name: "Github", href: "https://github.com/MuhammadMehdiRaza" },
-  { name: "LinkedIn", href: "https://www.linkedin.com/in/muhammad-mehdi-raza-a02496274/" },
+  { name: "+92 330 9189441", href: "tel:+923309189441" },
 ];
 
 // ========== DESIGN SYSTEM TOKENS ==========

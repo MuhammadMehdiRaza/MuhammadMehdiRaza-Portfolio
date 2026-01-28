@@ -24,8 +24,8 @@ export default function Navbar() {
 
         const observerOptions = {
             root: null,
-            rootMargin: "-20% 0px -70% 0px",
-            threshold: 0,
+            rootMargin: "-10% 0px -30% 0px",
+            threshold: 0.3,
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -83,8 +83,8 @@ export default function Navbar() {
                             key={link.name}
                             href={link.href}
                             className={`relative text-sm py-2 transition-colors duration-200 nav-link-underline ${isActive(link.href)
-                                    ? "text-blue-500 font-medium active"
-                                    : "text-slate-400 hover:text-slate-50"
+                                ? "text-blue-500 font-medium active"
+                                : "text-slate-400 hover:text-slate-50"
                                 }`}
                         >
                             {link.name}
@@ -148,8 +148,8 @@ export default function Navbar() {
                                     href={link.href}
                                     onClick={() => setIsMobileMenuOpen(false)}
                                     className={`px-4 py-3 rounded-lg transition-all duration-200 ${isActive(link.href)
-                                            ? "text-blue-500 bg-blue-500/10 font-medium"
-                                            : "text-slate-400 hover:text-slate-50 hover:bg-slate-800/50"
+                                        ? "text-blue-500 bg-blue-500/10 font-medium"
+                                        : "text-slate-400 hover:text-slate-50 hover:bg-slate-800/50"
                                         }`}
                                 >
                                     {link.name}
