@@ -20,15 +20,13 @@ export default function Navbar() {
 
     // Intersection Observer for scroll-spy
     useEffect(() => {
-        const sections = document.querySelectorAll("section[id]");
-
         const observerOptions = {
             root: null,
             rootMargin: "-10% 0px -30% 0px",
             threshold: 0.3,
         };
 
-        const observer = new IntersectionObserver((entries) => {
+        const intersectionObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     setActiveSection(`#${entry.target.id}`);
@@ -36,10 +34,28 @@ export default function Navbar() {
             });
         }, observerOptions);
 
-        sections.forEach((section) => observer.observe(section));
+        // Function to observe all sections
+        const observeAllSections = () => {
+            const sections = document.querySelectorAll("section[id]");
+            sections.forEach((section) => intersectionObserver.observe(section));
+        };
+
+        // Initial observation
+        observeAllSections();
+
+        // Watch for dynamically added sections (like Contact loaded with dynamic import)
+        const mutationObserver = new MutationObserver(() => {
+            observeAllSections();
+        });
+
+        mutationObserver.observe(document.body, {
+            childList: true,
+            subtree: true,
+        });
 
         return () => {
-            sections.forEach((section) => observer.unobserve(section));
+            intersectionObserver.disconnect();
+            mutationObserver.disconnect();
         };
     }, []);
 
