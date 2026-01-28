@@ -167,26 +167,57 @@ export const HACKATHON_ACHIEVEMENTS = [
 
 // ========== TECH STACK DATA ==========
 export const TECH_STACK = {
-  languages: [
-    { name: "Python", icon: "🐍" },
-    { name: "Java", icon: "☕" },
-    { name: "C++", icon: "⚡" },
-    { name: "SQL", icon: "🗃️" },
-    { name: "TypeScript", icon: "📘" },
-    { name: "JavaScript", icon: "🟨" },
+  frontend: [
+    { name: "HTML", icon: "FaHtml5" },
+    { name: "CSS", icon: "FaCss3Alt" },
+    { name: "JavaScript", icon: "SiJavascript" },
+    { name: "React", icon: "FaReact" },
+    { name: "Tailwind CSS", icon: "SiTailwindcss" },
+  ],
+  backend: [
+    { name: "Node.js", icon: "FaNodeJs" },
+    { name: "Express.js", icon: "SiExpress" },
+    { name: "REST APIs", icon: "SiPostman" },
   ],
   frameworks: [
-    { name: "Next.js", icon: "▲" },
-    { name: "Spring Boot", icon: "🍃" },
-    { name: "Django", icon: "🎸" },
-    { name: "TensorFlow", icon: "🧠" },
-    { name: "React.js", icon: "⚛️" },
+    { name: "Next.js", icon: "SiNextdotjs" },
+    { name: "Django", icon: "SiDjango" },
   ],
-  tools: [
-    { name: "Jira", icon: "📋" },
-    { name: "Git", icon: "🔀" },
-    { name: "Docker", icon: "🐳" },
-    { name: "VS Code", icon: "💻" },
+  languages: [
+    { name: "Python", icon: "FaPython" },
+    { name: "C", icon: "SiC" },
+    { name: "C++", icon: "SiCplusplus" },
+    { name: "Java", icon: "FaJava" },
+    { name: "JavaScript", icon: "SiJavascript" },
+    { name: "SQL", icon: "SiPostgresql" },
+  ],
+  aiml: [
+    { name: "Machine Learning", icon: "FaBrain" },
+    { name: "Deep Learning", icon: "SiTensorflow" },
+    { name: "NLP", icon: "FaMicrochip" },
+    { name: "LLMs", icon: "SiOpenai" },
+    { name: "Pandas", icon: "SiPandas" },
+    { name: "NumPy", icon: "SiNumpy" },
+    { name: "Scikit-learn", icon: "SiScikitlearn" },
+    { name: "TensorFlow", icon: "SiTensorflow" },
+    { name: "Generative AI", icon: "SiOpenai" },
+  ],
+  deployment: [
+    { name: "Vercel", icon: "SiVercel" },
+    { name: "Railway", icon: "SiRailway" },
+  ],
+  versionControl: [
+    { name: "Git", icon: "FaGitAlt" },
+    { name: "GitHub", icon: "FaGithub" },
+  ],
+  os: [
+    { name: "Ubuntu", icon: "FaUbuntu" },
+    { name: "Windows", icon: "FaWindows" },
+    { name: "macOS", icon: "FaApple" },
+  ],
+  ide: [
+    { name: "VS Code", icon: "VscCode" },
+    { name: "Eclipse", icon: "SiEclipseide" },
   ],
 };
 

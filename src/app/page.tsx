@@ -166,6 +166,37 @@ export default function Home() {
               />
             ))}
           </div>
+
+          {/* View More Projects Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="flex justify-center mt-12"
+          >
+            <a
+              href={PERSONAL_INFO.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group px-8 py-3 text-base font-medium text-slate-50 bg-slate-800/50 hover:bg-blue-600 border border-slate-700 hover:border-blue-600 rounded-lg transition-all duration-200 hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] flex items-center gap-2"
+            >
+              <span>View More Projects</span>
+              <svg
+                className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </a>
+          </motion.div>
         </div>
       </section>
 

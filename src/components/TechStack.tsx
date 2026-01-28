@@ -1,42 +1,113 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { TECH_STACK } from "@/lib/constants";
+import * as FaIcons from "react-icons/fa";
+import * as SiIcons from "react-icons/si";
+import * as VscIcons from "react-icons/vsc";
+
+type TabKey = keyof typeof TECH_STACK;
+
+interface Tab {
+    key: TabKey;
+    label: string;
+}
+
+// Icon mapper to convert string icon names to React components
+const getIconComponent = (iconName: string) => {
+    // Check FontAwesome icons first
+    if (iconName.startsWith("Fa")) {
+        return (FaIcons as any)[iconName];
+    }
+    // Check Simple Icons
+    if (iconName.startsWith("Si")) {
+        return (SiIcons as any)[iconName];
+    }
+    // Check VS Code icons
+    if (iconName.startsWith("Vsc")) {
+        return (VscIcons as any)[iconName];
+    }
+    return FaIcons.FaCircle;
+};
 
 export default function TechStack() {
-    const categories = [
-        { title: "Languages", items: TECH_STACK.languages },
-        { title: "Frameworks", items: TECH_STACK.frameworks },
-        { title: "Tools", items: TECH_STACK.tools },
+    const tabs: Tab[] = [
+        { key: "frontend", label: "Frontend" },
+        { key: "backend", label: "Backend" },
+        { key: "frameworks", label: "Frameworks" },
+        { key: "languages", label: "Languages" },
+        { key: "aiml", label: "AI/ML" },
+        { key: "deployment", label: "Deployment" },
+        { key: "versionControl", label: "Version Control" },
+        { key: "os", label: "OS" },
+        { key: "ide", label: "IDE" },
     ];
 
+    const [activeTab, setActiveTab] = useState<TabKey>("frontend");
+
     return (
-        <div className="space-y-8">
-            {categories.map((category) => (
-                <div key={category.title}>
-                    <h3 className="text-lg font-semibold text-slate-50 mb-4">
-                        {category.title}
-                    </h3>
-                    <div className="flex flex-wrap gap-3">
-                        {category.items.map((item, index) => (
+        <div className="space-y-10">
+            {/* Tab Navigation */}
+            <div className="flex flex-wrap gap-3 justify-center">
+                {tabs.map((tab) => (
+                    <button
+                        key={tab.key}
+                        onClick={() => setActiveTab(tab.key)}
+                        className={`relative px-6 py-3 text-sm font-semibold rounded-lg transition-all duration-300 ${activeTab === tab.key
+                            ? "text-slate-50 bg-blue-600 shadow-[0_0_20px_rgba(37,99,235,0.3)]"
+                            : "text-slate-400 bg-slate-800/50 hover:text-slate-50 hover:bg-slate-800"
+                            }`}
+                    >
+                        {tab.label}
+                    </button>
+                ))}
+            </div>
+
+            {/* Tab Content - Icon Grid */}
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={activeTab}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3 }}
+                    className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4"
+                >
+                    {TECH_STACK[activeTab].map((item, index) => {
+                        const IconComponent = getIconComponent(item.icon);
+                        return (
                             <motion.div
                                 key={item.name}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.3, delay: index * 0.05 }}
-                                viewport={{ once: true }}
-                                whileHover={{ y: -8 }}
-                                className="px-4 py-3 rounded-xl bg-slate-900/50 backdrop-blur-md border border-slate-800 hover:border-blue-600/30 hover:shadow-[0_0_20px_rgba(37,99,235,0.15)] transition-all duration-200 flex items-center gap-2 group"
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{
+                                    duration: 0.3,
+                                    delay: index * 0.05,
+                                    type: "spring",
+                                    stiffness: 260,
+                                    damping: 20,
+                                }}
+                                whileHover={{
+                                    y: -10,
+                                    boxShadow: "0 0 20px rgba(37, 99, 235, 0.3)",
+                                }}
+                                className="group relative p-6 rounded-xl bg-slate-900/50 backdrop-blur-md border border-slate-800 hover:border-blue-600/50 transition-all duration-300 flex flex-col items-center justify-center gap-3 cursor-default"
                             >
-                                <span className="text-lg">{item.icon}</span>
-                                <span className="text-sm font-medium text-slate-300 group-hover:text-blue-400 transition-colors duration-200">
+                                {/* Icon */}
+                                <div className="w-12 h-12 flex items-center justify-center text-blue-500 group-hover:text-blue-400 transition-colors duration-300">
+                                    {IconComponent && <IconComponent className="w-full h-full" />}
+                                </div>
+
+                                {/* Name */}
+                                <span className="text-sm font-medium text-slate-200 text-center leading-tight">
                                     {item.name}
                                 </span>
                             </motion.div>
-                        ))}
-                    </div>
-                </div>
-            ))}
+                        );
+                    })}
+                </motion.div>
+            </AnimatePresence>
         </div>
     );
 }
