@@ -3,6 +3,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { createPortal } from "react-dom";
 import { RESEARCH_CERTIFICATES } from "@/lib/constants";
 
 interface Certificate {
@@ -14,27 +15,166 @@ interface Certificate {
     thumbnail: string;
 }
 
+// Fullscreen Modal Component
+function FullscreenModal({ cert, onClose }: { cert: Certificate; onClose: () => void }) {
+    // Close on Escape key
+    useEffect(() => {
+        const handleEsc = (e: KeyboardEvent) => {
+            if (e.key === "Escape") onClose();
+        };
+        window.addEventListener("keydown", handleEsc);
+        document.body.style.overflow = "hidden";
+
+        return () => {
+            window.removeEventListener("keydown", handleEsc);
+            document.body.style.overflow = "auto";
+        };
+    }, [onClose]);
+
+    const modalContent = (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                zIndex: 9999,
+            }}
+        >
+            {/* Full Black Backdrop - Click to Close */}
+            <div
+                style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    backgroundColor: 'rgba(2, 6, 23, 0.98)',
+                    backdropFilter: 'blur(20px)',
+                    cursor: 'pointer',
+                }}
+                onClick={onClose}
+            />
+
+            {/* Fixed Close Button - Always Top Right */}
+            <button
+                onClick={onClose}
+                style={{
+                    position: 'fixed',
+                    top: '20px',
+                    right: '20px',
+                    zIndex: 10000,
+                    width: '48px',
+                    height: '48px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderRadius: '50%',
+                    backgroundColor: 'rgba(30, 41, 59, 0.95)',
+                    border: '2px solid rgba(71, 85, 105, 0.8)',
+                    color: 'white',
+                    cursor: 'pointer',
+                    boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
+                }}
+                onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = '#dc2626';
+                    e.currentTarget.style.borderColor = '#ef4444';
+                }}
+                onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = 'rgba(30, 41, 59, 0.95)';
+                    e.currentTarget.style.borderColor = 'rgba(71, 85, 105, 0.8)';
+                }}
+                aria-label="Close"
+            >
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            {/* Centered Image Container */}
+            <div
+                style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '60px 20px 20px 20px',
+                    overflow: 'auto',
+                }}
+                onClick={(e) => e.target === e.currentTarget && onClose()}
+            >
+                <motion.div
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0.9, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    style={{
+                        position: 'relative',
+                        maxWidth: '90vw',
+                        maxHeight: '85vh',
+                    }}
+                >
+                    {/* Royal Blue Glow */}
+                    <div
+                        style={{
+                            position: 'absolute',
+                            inset: '-4px',
+                            background: 'rgba(59, 130, 246, 0.3)',
+                            borderRadius: '12px',
+                            filter: 'blur(15px)',
+                            zIndex: -1,
+                        }}
+                    />
+
+                    {/* Certificate Image */}
+                    <Image
+                        src={cert.thumbnail}
+                        alt={cert.title}
+                        width={1200}
+                        height={850}
+                        priority
+                        style={{
+                            maxWidth: '90vw',
+                            maxHeight: '85vh',
+                            width: 'auto',
+                            height: 'auto',
+                            objectFit: 'contain',
+                            borderRadius: '8px',
+                            boxShadow: '0 25px 50px rgba(0,0,0,0.5)',
+                            backgroundColor: 'white',
+                        }}
+                    />
+                </motion.div>
+            </div>
+        </motion.div>
+    );
+
+    // Use portal to render at document root level
+    if (typeof window !== 'undefined') {
+        return createPortal(modalContent, document.body);
+    }
+    return null;
+}
+
 export default function ResearchCredentialsGallery() {
     const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
 
     const openModal = useCallback((cert: Certificate) => {
         setSelectedCert(cert);
-        document.body.style.overflow = "hidden";
     }, []);
 
     const closeModal = useCallback(() => {
         setSelectedCert(null);
-        document.body.style.overflow = "auto";
     }, []);
-
-    // Close on Escape key
-    useEffect(() => {
-        const handleEsc = (e: KeyboardEvent) => {
-            if (e.key === "Escape") closeModal();
-        };
-        window.addEventListener("keydown", handleEsc);
-        return () => window.removeEventListener("keydown", handleEsc);
-    }, [closeModal]);
 
     return (
         <>
@@ -53,7 +193,7 @@ export default function ResearchCredentialsGallery() {
                     </div>
                 </div>
 
-                {/* 3-Card Grid - All Text on Cards */}
+                {/* 3-Card Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     {RESEARCH_CERTIFICATES.map((cert, index) => (
                         <motion.div
@@ -65,7 +205,7 @@ export default function ResearchCredentialsGallery() {
                             whileHover={{ y: -6, scale: 1.02 }}
                             className="rounded-xl bg-slate-900/60 backdrop-blur-md border border-slate-800 hover:border-blue-500/50 hover:shadow-[0_0_25px_rgba(37,99,235,0.2)] transition-all duration-300 overflow-hidden group flex flex-col"
                         >
-                            {/* Certificate Thumbnail */}
+                            {/* Thumbnail */}
                             <div className="relative h-28 w-full overflow-hidden bg-slate-800">
                                 <Image
                                     src={cert.thumbnail}
@@ -109,68 +249,10 @@ export default function ResearchCredentialsGallery() {
                 </div>
             </div>
 
-            {/* Clean Image Viewer Modal */}
+            {/* Fullscreen Modal */}
             <AnimatePresence>
                 {selectedCert && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.15 }}
-                        className="fixed inset-0 z-50"
-                    >
-                        {/* Click-to-Exit Backdrop */}
-                        <div
-                            className="absolute inset-0 bg-slate-950/90 backdrop-blur-2xl cursor-pointer"
-                            onClick={closeModal}
-                        />
-
-                        {/* Fixed Close Button - Always Visible */}
-                        <button
-                            onClick={closeModal}
-                            className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[60] w-12 h-12 flex items-center justify-center rounded-full bg-slate-800/95 hover:bg-red-600 border-2 border-slate-600 hover:border-red-500 text-white transition-all duration-200 shadow-2xl backdrop-blur-sm"
-                            aria-label="Close"
-                        >
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-
-                        {/* Centered Image Container - Desktop */}
-                        {/* Scrollable Container - Mobile */}
-                        <div className="absolute inset-0 overflow-auto flex items-center justify-center p-4 sm:p-8">
-                            <motion.div
-                                initial={{ scale: 0.9, opacity: 0 }}
-                                animate={{ scale: 1, opacity: 1 }}
-                                exit={{ scale: 0.9, opacity: 0 }}
-                                transition={{ duration: 0.2, ease: "easeOut" }}
-                                className="relative"
-                                onClick={(e) => e.stopPropagation()}
-                            >
-                                {/* Royal Blue Glow Effect */}
-                                <div className="absolute -inset-1 bg-blue-500/20 rounded-lg blur-xl" />
-
-                                {/* Certificate Image */}
-                                <div className="relative bg-white rounded-lg shadow-2xl overflow-hidden border border-blue-500/30">
-                                    {/* Desktop: Contained | Mobile: Larger for scroll/pan */}
-                                    <Image
-                                        src={selectedCert.thumbnail}
-                                        alt={selectedCert.title}
-                                        width={1400}
-                                        height={1000}
-                                        priority
-                                        className="
-                                            block
-                                            w-[180vw] sm:w-auto
-                                            max-w-none sm:max-w-[90vw]
-                                            h-auto sm:max-h-[90vh]
-                                            object-contain
-                                        "
-                                    />
-                                </div>
-                            </motion.div>
-                        </div>
-                    </motion.div>
+                    <FullscreenModal cert={selectedCert} onClose={closeModal} />
                 )}
             </AnimatePresence>
         </>
