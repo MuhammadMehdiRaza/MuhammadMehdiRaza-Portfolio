@@ -55,6 +55,7 @@ export const PROJECT_THUMBNAILS = {
 // ========== PROJECT VIDEOS ==========
 export const PROJECT_VIDEOS = {
   streamify: "/projects/streamify-demo.mp4",
+  crowdserve: "/projects/crowdserve-demo.mp4",
 };
 
 // ========== GITHUB LINKS ==========
@@ -127,7 +128,7 @@ export const PROJECTS = [
     thumbnailKey: "crowdserve" as const,
     githubKey: "crowdserve" as const,
     featured: true,
-    hasVideo: false,
+    hasVideo: true,
   },
   {
     id: 3,
