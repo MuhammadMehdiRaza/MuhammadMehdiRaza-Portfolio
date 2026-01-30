@@ -21,17 +21,17 @@ const chatbotSuggestions = [
 
 // Chatbot responses with pattern matching
 const chatbotResponses = {
+  experience: {
+    patterns: ["research & internships", "tell me about your research", "your research", "internship", "kfupm", "sdaia", "work experience"],
+    response: "I served as an **AI Research Intern at KFUPM-SDAIA** (Summer 2025), focusing on LLM optimization using the DSPy framework. My research on 'Entity Sentiment Classification' was recently presented at the **Engitek '25 conference** and is awaiting publication on IEEE Xplore. I also serve as the **Tech Lead** for the AI Frontier Society at GIKI."
+  },
   intro: {
-    patterns: ["who are you", "introduce yourself", "tell me about yourself", "about you", "introduction"],
+    patterns: ["who are you", "introduce yourself", "tell me about yourself", "about you", "who is muhammad"],
     response: "Hi! I'm Muhammad Mehdi Raza, a **Software Engineering student** at GIKI with a **3.69 GPA**. I'm an AI Researcher and Full-Stack Developer passionate about LLM optimization and building scalable web systems like CrowdServe and SehatSathi.\n\nCurrently, I am actively seeking **Internships or Full-time roles** (Onsite in Saudi Arabia or Pakistan, as well as Remote anywhere) to apply my expertise in Web and AI! 🚀"
   },
   education: {
     patterns: ["education", "study", "university", "degree", "gpa", "academic", "giki", "school"],
     response: "I am a **3rd-year Software Engineering student** at GIKI, maintaining a **3.69 GPA**.\n\nI graduated my matriculation and intermediate from **PISK (Pakistan International School Al Khobar)**. In matric I achieved **99%** and secured **2nd position** in the entire school, and in intermediate I got **85%** with **3rd position** (FBISE Board).\n\nI have recently completed an **8-week internship at KFUPM** where I worked on LLM optimization and AI research.\n\nI am immediately open to internship or full-time opportunities where I can contribute to the growing AI ecosystem! 🎯"
-  },
-  experience: {
-    patterns: ["experience", "internship", "research", "kfupm", "sdaia", "work", "job", "tell me about your research", "research & internships", "internships"],
-    response: "I served as an **AI Research Intern at KFUPM-SDAIA** (Summer 2025), focusing on LLM optimization using the DSPy framework. My research on 'Entity Sentiment Classification' was recently presented at the **Engitek '25 conference** and is awaiting publication on IEEE Xplore. I also serve as the **Tech Lead** for the AI Frontier Society at GIKI."
   },
   skills: {
     patterns: ["skills", "tech stack", "languages", "programming", "technologies", "tools"],
