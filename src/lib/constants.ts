@@ -57,6 +57,7 @@ export const PROJECT_VIDEOS = {
   streamify: "/projects/streamify-demo.mp4",
   crowdserve: "/projects/crowdserve-demo.mp4",
   digitRecognition: "/projects/digit-recognition-demo.mp4",
+  quizApp: "/projects/quiz-app-demo.mp4",
 };
 
 // ========== GITHUB LINKS ==========
@@ -159,7 +160,7 @@ export const PROJECTS = [
     thumbnailKey: "quizApp" as const,
     githubKey: "quizApp" as const,
     featured: false,
-    hasVideo: false,
+    hasVideo: true,
   },
 ];
 
