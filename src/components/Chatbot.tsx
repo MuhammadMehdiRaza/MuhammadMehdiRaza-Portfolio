@@ -31,7 +31,7 @@ const chatbotResponses = {
   },
   experience: {
     patterns: ["experience", "internship", "research", "kfupm", "sdaia", "work", "job"],
-    response: "I served as an **AI Research Intern at KFUPM-SDAIA** (Summer 2025), where I optimized LLMs using the DSPy framework for structured prompting.\n\nMy research on 'Entity Sentiment Classification using Arabic Lightweight LLMs' was recently presented at the **Engitek '25 conference** and is awaiting publication on IEEE Xplore.\n\nI also serve as the **Tech Lead** for the AI Frontier Society at GIKI and am eager to transition these research skills into the professional tech landscape in Saudi Arabia or Pakistan. 🚀\n\n**Other Roles:**\n🚀 Tech Lead @ AI Frontier Society (Sep 2025 - Present)\n🤝 Society Member @ ASME GIKI (Feb 2024 - Present)"
+    response: "I served as an **AI Research Intern at KFUPM-SDAIA** (Summer 2025), focusing on LLM optimization using the DSPy framework. My research on 'Entity Sentiment Classification' was recently presented at the **Engitek '25 conference** and is awaiting publication on IEEE Xplore. I also serve as the **Tech Lead** for the AI Frontier Society at GIKI."
   },
   skills: {
     patterns: ["skills", "tech stack", "languages", "programming", "technologies", "tools"],
@@ -299,6 +299,20 @@ export default function Chatbot() {
                     </button>
                   ))}
                 </div>
+              </div>
+            )}
+            {!showSuggestions && (
+              <div className="px-4 py-2 border-t border-slate-800 bg-slate-900 flex justify-center">
+                <button
+                  onClick={() => setShowSuggestions(true)}
+                  className="text-slate-400 hover:text-white transition-colors flex items-center gap-2 text-xs"
+                  title="Show suggestions"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                  </svg>
+                  <span>Suggestions</span>
+                </button>
               </div>
             )}
 
