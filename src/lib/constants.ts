@@ -56,6 +56,7 @@ export const PROJECT_THUMBNAILS = {
 export const PROJECT_VIDEOS = {
   streamify: "/projects/streamify-demo.mp4",
   crowdserve: "/projects/crowdserve-demo.mp4",
+  digitRecognition: "/projects/digit-recognition-demo.mp4",
 };
 
 // ========== GITHUB LINKS ==========
@@ -148,7 +149,7 @@ export const PROJECTS = [
     thumbnailKey: "digitRecognition" as const,
     githubKey: "digitRecognition" as const,
     featured: false,
-    hasVideo: false,
+    hasVideo: true,
   },
   {
     id: 5,
