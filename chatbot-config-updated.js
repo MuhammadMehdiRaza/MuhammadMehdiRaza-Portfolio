@@ -9,7 +9,7 @@ const chatbotSuggestions = [
   { id: "experience", label: "Tell me about your research & internships", prompt: "Tell me about your research & internships" },
   { id: "skills", label: "What is your tech stack?", prompt: "What is your tech stack?" },
   { id: "projects", label: "Can I see your key projects?", prompt: "Can I see your key projects?" },
-  { id: "ai", label: "How have you used AI in projects?", prompt: "How have you used AI in projects?" },
+  { id: "awards", label: "Awards & Certifications", prompt: "Awards & Certifications" },
   { id: "education", label: "What is your academic background?", prompt: "What is your academic background?" },
   { id: "dsa", label: "Tell me about your DSA skills", prompt: "Tell me about your DSA skills" },
   { id: "certifications", label: "What certifications do you have?", prompt: "What certifications do you have?" },
@@ -26,32 +26,32 @@ const chatbotSuggestions = [
 const chatbotResponses = {
   intro: {
     patterns: ["who are you", "introduce yourself", "tell me about yourself", "about you", "introduction"],
-    response: "Hi! I'm **Muhammad Mehdi Raza**, a Software Engineering student at **GIKI** (GPA: **3.69**). I'm an **AI Researcher** and **Full-Stack Developer** specializing in **LLM optimization**, **scalable systems**, and **data structures & algorithms**! 🚀\n\nI recently completed my AI research internship at **KFUPM-SDAIA** where I optimized LLMs using the DSPy framework."
+    response: "Hi! I'm Muhammad Mehdi Raza, a **Software Engineering student** at GIKI with a **3.69 GPA**. I'm an AI Researcher and Full-Stack Developer passionate about LLM optimization and building scalable web systems like CrowdServe and SehatSathi.\n\nCurrently, I am actively seeking **Internships or Full-time roles** (Onsite in Saudi Arabia or Pakistan, as well as Remote anywhere) to apply my expertise in Web and AI! 🚀"
   },
   
   education: {
     patterns: ["education", "study", "university", "degree", "gpa", "academic", "giki", "school"],
-    response: "I'm currently in my **3rd year** of **BS Software Engineering** at **Ghulam Ishaq Khan Institute (GIKI)**, maintaining a **3.69 GPA**.\n\n**Key Coursework:**\n- Data Structures & Algorithms\n- Operating Systems (Multi-threading, POSIX threads)\n- Software Architecture & Design Patterns\n- Database Systems\n- Deep Learning & AI\n\nI focus on practical application of concepts in real-world projects! 📚"
+    response: "I am a **3rd-year Software Engineering student** at GIKI, maintaining a **3.69 GPA**.\n\nI graduated my matriculation and intermediate from **PISK (Pakistan International School Al Khobar)**. In matric I achieved **99%** and secured **2nd position** in the entire school, and in intermediate I got **85%** with **3rd position** (FBISE Board).\n\nI have recently completed an **8-week internship at KFUPM** where I worked on LLM optimization and AI research.\n\nI am immediately open to internship or full-time opportunities where I can contribute to the growing AI ecosystem! 🎯"
   },
   
   experience: {
     patterns: ["experience", "internship", "research", "kfupm", "sdaia", "work", "job"],
-    response: "My professional journey includes:\n\n🔬 **AI Research Intern** @ **KFUPM-SDAIA Joint Research Center**\n📅 *June 14 - Aug 7, 2025*\n- Optimized LLMs (Qwen, Phi-mini, Meta Allam) using **DSPy framework**\n- Implemented structured prompting for model fine-tuning\n- Contributed to language model efficiency research\n- Completed 8-week intensive AI research program\n\n🚀 **Tech Lead** @ **AI Frontier Society (GIKI)**\n📅 *Sep 2025 - Present*\n- Leading GIKI's first AI society technical division\n- Managed NeoHacks GIKI Edition (110+ students)\n- Coordinating technical roadmaps and developer teams\n\n🤝 **Society Member** @ **ASME GIKI**\n📅 *Feb 2024 - Present*\n- Multi-disciplinary collaboration and networking\n- Stakeholder coordination for All-Pak-Events"
+    response: "I served as an **AI Research Intern at KFUPM-SDAIA** (Summer 2025), where I optimized LLMs using the DSPy framework for structured prompting.\n\nMy research on 'Entity Sentiment Classification using Arabic Lightweight LLMs' was recently presented at the **Engitek '25 conference** and is awaiting publication on IEEE Xplore.\n\nI also serve as the **Tech Lead** for the AI Frontier Society at GIKI and am eager to transition these research skills into the professional tech landscape in Saudi Arabia or Pakistan. 🚀\n\n**Other Roles:**\n🚀 Tech Lead @ AI Frontier Society (Sep 2025 - Present)\n🤝 Society Member @ ASME GIKI (Feb 2024 - Present)"
   },
   
   skills: {
     patterns: ["skills", "tech stack", "languages", "programming", "technologies", "tools"],
-    response: "My technical expertise spans:\n\n**🤖 AI/ML:**\n- NLP & Deep Learning (TensorFlow, Keras)\n- LLM Optimization & Fine-tuning\n- DSPy Framework for structured prompting\n- CNN architectures (90.87% accuracy on MNIST)\n\n**💻 Programming Languages:**\n- **C++**: Advanced DSA, OOP, Multi-threading\n- **Python**: AI/ML, Backend Development\n- **Java**: Spring Boot, MVC Architecture, REST APIs\n- **JavaScript/TypeScript**: React.js, Next.js\n\n**🏗️ Architecture & Design:**\n- MVC Architecture, Microservices\n- RESTful API Design\n- Software Design Patterns\n- Full-Stack Development (MERN, Django)\n\n**🛠️ Tools & Frameworks:**\n- Spring Boot, Django, React.js, Next.js\n- Git, Jira, Docker\n- TensorFlow, Keras, PyTorch"
+    response: "My technical expertise spans:\n\n**AI/ML:**\nNLP & Deep Learning (TensorFlow, Keras), LLM Optimization & Fine-tuning, DSPy Framework, CNN architectures (90.87% accuracy on MNIST)\n\n**Programming Languages:**\nC++ (Advanced DSA, OOP, Multi-threading), Python (AI/ML, Backend), Java (Spring Boot, REST APIs), JavaScript/TypeScript (React.js, Next.js)\n\n**Architecture & Design:**\nMVC Architecture, Microservices, RESTful API Design, Software Design Patterns, Full-Stack Development (MERN, Django)\n\n**Tools & Frameworks:**\nSpring Boot, Django, React.js, Next.js, Git, Jira, Docker, TensorFlow, Keras, PyTorch"
   },
   
   projects: {
     patterns: ["projects", "built", "samples", "work", "portfolio", "what have you made"],
-    response: "Here are my key projects showcasing different skills:\n\n**1. 🎵 Streamify** (C++ | DSA)\n- Optimized metadata processing using **AVL Trees** & **Stacks**\n- Efficient data handling and retrieval system\n- Advanced Data Structures implementation\n[GitHub](https://github.com/NiazAli573/DSA-Project-streamfy)\n\n**2. 🌐 CrowdServe** (Java | Spring Boot)\n- Full-stack service-oriented application\n- **MVC Architecture** with RESTful APIs\n- Scalable backend with Spring Boot\n[GitHub](https://github.com/mIBRAHIM707/CrowdServe)\n\n**3. 🏥 SehatSathi** (React.js | Django)\n- Healthcare platform with modern tech stack\n- **React.js** frontend + **Django** backend\n- Managed with Jira following SDLC\n[GitHub](https://github.com/jagtar5/SehatSathi)\n\n**4. 🔢 Handwritten Digit Recognition** (Python | TensorFlow)\n- CNN achieving **90.87% accuracy** on MNIST\n- Hyperparameter tuning & data normalization\n- Deep Learning implementation\n[GitHub](https://github.com/MuhammadMehdiRaza/Hand_Written_Digit_Recogntition)\n\n**5. 📝 Quiz Application** (C++ | OOP)\n- Comprehensive quiz system with authentication\n- Object-Oriented Programming principles\n- User management & scoring system\n[GitHub](https://github.com/Ahmaduzairshah12/quiz-application-cs112-project)\n\n🎥 **All projects include video demos on my portfolio!**"
+    response: "Here are my key projects showcasing different skills:\n\n**1. Streamify** (C++ | DSA)\nOptimized metadata processing using AVL Trees & Stacks, efficient data handling and retrieval system\n[GitHub](https://github.com/NiazAli573/DSA-Project-streamfy)\n\n**2. CrowdServe** (Java | Spring Boot)\nFull-stack service-oriented application with MVC Architecture and RESTful APIs\n[GitHub](https://github.com/mIBRAHIM707/CrowdServe)\n\n**3. SehatSathi** (React.js | Django)\nHealthcare platform with React.js frontend and Django backend, managed with Jira\n[GitHub](https://github.com/jagtar5/SehatSathi)\n\n**4. Handwritten Digit Recognition** (Python | TensorFlow)\nCNN achieving 90.87% accuracy on MNIST with hyperparameter tuning\n[GitHub](https://github.com/MuhammadMehdiRaza/Hand_Written_Digit_Recogntition)\n\n**5. Quiz Application** (C++ | OOP)\nComprehensive quiz system with authentication and user management\n[GitHub](https://github.com/Ahmaduzairshah12/quiz-application-cs112-project)\n\n🎥 All projects include video demos on my portfolio!"
   },
   
-  ai: {
-    patterns: ["ai", "llm", "machine learning", "dspy", "generative ai", "artificial intelligence", "ml"],
-    response: "I specialize in **Generative AI** and **LLM optimization**:\n\n🧠 **LLM Research @ KFUPM-SDAIA:**\n- Optimized **Qwen**, **Phi-mini**, and **Meta Allam** models\n- Implemented **DSPy framework** for structured prompting\n- Model fine-tuning and efficiency improvements\n\n🎯 **Deep Learning Projects:**\n- Built **CNN** for handwritten digit recognition (90.87% accuracy)\n- Applied hyperparameter tuning and optimization\n- Experience with **TensorFlow** and **Keras**\n\n📚 **AI Certifications:**\n- Advanced Learning Algorithms (Coursera)\n- Introduction to Generative AI (Coursera)\n- AI Essentials (Coursera)\n\n💡 I'm passionate about making AI more efficient and accessible!"
+  awards: {
+    patterns: ["awards", "certifications", "achievements", "certificates", "honors", "recognition"],
+    response: "I maintain a consistent record of excellence:\n\n🏆 **Dean's Honor List**: Achieved the Dean's Honor List 5 out of 5 times at GIKI, reflecting my dedication to academic top-performance.\n\n🥇 **Hackathon Winner**: Winner of the Google Quantumnia Hackathon and the Microsoft Student Chapter UI/UX Design Competition, proving my ability to deliver high-quality solutions under pressure.\n\n📜 **Professional Certificates**: I hold multiple verified Coursera certifications in Machine Learning, Generative AI Engineering, and Google UI/UX Design.\n\nAll certificates are displayed on my portfolio with verification links! ✨"
   },
   
   dsa: {
@@ -70,8 +70,8 @@ const chatbotResponses = {
   },
   
   achievements: {
-    patterns: ["achievements", "awards", "accomplishments", "success"],
-    response: "Here are some of my notable achievements:\n\n**🏆 Academic:**\n- **3.69 GPA** at GIKI in Software Engineering\n- Dean's List recognition\n- Strong focus on AI and software architecture\n\n**🔬 Research:**\n- **AI Research Intern** at prestigious KFUPM-SDAIA center\n- Completed intensive 8-week JRCAI training program\n- Published research work on LLM optimization\n\n**💻 Projects:**\n- **4 full-stack projects** with video demonstrations\n- **90.87% accuracy** on MNIST digit recognition\n- Production-ready applications with modern architecture\n\n**👥 Leadership:**\n- **Tech Lead** of AI Frontier Society\n- Successfully organized **NeoHacks** with 110+ participants\n- Building GIKI's first AI community\n\n**📜 Certifications:**\n- 5+ professional certifications in AI/ML and Software Engineering\n- KFUPM research certifications"
+    patterns: ["achievements", "accomplishments", "success", "milestones"],
+    response: "Here are some of my notable achievements:\n\n**Academic Excellence:**\n- 3.69 GPA at GIKI in Software Engineering\n- Dean's Honor List 5 out of 5 times\n- 99% in Matriculation (2nd position school-wide)\n- 85% in Intermediate (3rd position school-wide)\n\n**Research Contributions:**\n- AI Research Intern at KFUPM-SDAIA\n- Research presented at Engitek '25 conference\n- Awaiting publication on IEEE Xplore\n\n**Project Portfolio:**\n- 4 full-stack projects with video demonstrations\n- 90.87% accuracy on MNIST digit recognition\n- Production-ready applications with modern architecture\n\n**Leadership & Community:**\n- Tech Lead of AI Frontier Society\n- Organized NeoHacks with 110+ participants\n- Building GIKI's first AI community"
   },
   
   github: {
