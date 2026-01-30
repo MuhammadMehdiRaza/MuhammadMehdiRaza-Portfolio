@@ -107,9 +107,9 @@ export default function Chatbot() {
     
     for (const [key, value] of Object.entries(chatbotResponses)) {
       if (key === "default") continue;
-      const { patterns, response } = value;
-      if (patterns.some((pattern) => normalizedInput.includes(pattern))) {
-        return response;
+      const entry = value as { patterns: string[]; response: string };
+      if (entry.patterns && entry.patterns.some((pattern: string) => normalizedInput.includes(pattern))) {
+        return entry.response;
       }
     }
     
