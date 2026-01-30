@@ -18,6 +18,7 @@ const CertificationSection = dynamic(() => import("@/components/CertificationSec
   ssr: false,
 });
 const Contact = dynamic(() => import("@/components/Contact"), { ssr: false });
+const Chatbot = dynamic(() => import("@/components/Chatbot"), { ssr: false });
 
 export default function Home() {
   return (
@@ -247,6 +248,9 @@ export default function Home() {
 
       {/* ========== FOOTER ========== */}
       <Footer />
+
+      {/* ========== CHATBOT ========== */}
+      <Chatbot />
     </main>
   );
 }
