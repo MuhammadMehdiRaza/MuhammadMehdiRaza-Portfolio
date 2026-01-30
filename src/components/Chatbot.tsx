@@ -83,6 +83,7 @@ interface Message {
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showSuggestions, setShowSuggestions] = useState(true);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 0,
@@ -191,7 +192,7 @@ export default function Chatbot() {
       {/* Chatbot Toggle Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-slate-900 rounded-full shadow-2xl flex items-center justify-center text-white hover:shadow-blue-500/20 hover:shadow-2xl transition-all duration-200 border-2 border-slate-700 hover:border-blue-500"
+        className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-black rounded-full shadow-2xl flex items-center justify-center text-white hover:shadow-blue-500/20 hover:shadow-2xl transition-all duration-200"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
@@ -201,12 +202,12 @@ export default function Chatbot() {
           </svg>
         ) : (
           <div className="relative">
-            {/* AI Sparkle Icon */}
-            <svg className="w-7 h-7 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+            {/* Robot Icon */}
+            <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 7h-2v5.5c0 1.38-1.12 2.5-2.5 2.5S11 15.88 11 14.5V9H9v5.5c0 1.38-1.12 2.5-2.5 2.5S4 15.88 4 14.5V9H2v5.5C2 17.43 4.07 20 6.5 20H9v2h6v-2h2.5c2.43 0 4.5-2.07 4.5-5.5V9h-2c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v3c0 1.1.9 2 2 2z"/>
             </svg>
             {/* Green active indicator */}
-            <div className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-slate-900"></div>
+            <div className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-black"></div>
           </div>
         )}
       </motion.button>
@@ -223,8 +224,8 @@ export default function Chatbot() {
             {/* Header */}
             <div className="bg-slate-900 border-b border-slate-800 p-4 flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center border-2 border-blue-500">
-                <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 7h-2v5.5c0 1.38-1.12 2.5-2.5 2.5S11 15.88 11 14.5V9H9v5.5c0 1.38-1.12 2.5-2.5 2.5S4 15.88 4 14.5V9H2v5.5C2 17.43 4.07 20 6.5 20H9v2h6v-2h2.5c2.43 0 4.5-2.07 4.5-5.5V9h-2c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v3c0 1.1.9 2 2 2z"/>
                 </svg>
               </div>
               <div className="flex-1">
@@ -275,23 +276,35 @@ export default function Chatbot() {
             </div>
 
             {/* Suggestions */}
-            <div className="px-4 py-3 border-t border-slate-800 bg-slate-900">
-              <p className="text-xs text-slate-400 mb-2 font-medium">Suggested questions</p>
-              <div className="flex flex-wrap gap-2">
-                {chatbotSuggestions.slice(0, 6).map((suggestion) => (
+            {showSuggestions && (
+              <div className="px-4 py-3 border-t border-slate-800 bg-slate-900">
+                <div className="flex items-center justify-between mb-2">
+                  <p className="text-xs text-slate-400 font-medium">Suggested questions</p>
                   <button
-                    key={suggestion.id}
-                    onClick={() => handleSuggestionClick(suggestion.prompt)}
-                    className="text-xs px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg transition-colors border border-slate-700 hover:border-slate-600 flex items-center gap-1"
+                    onClick={() => setShowSuggestions(false)}
+                    className="text-slate-400 hover:text-white transition-colors"
                   >
-                    {suggestion.label}
-                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </button>
-                ))}
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {chatbotSuggestions.slice(0, 6).map((suggestion) => (
+                    <button
+                      key={suggestion.id}
+                      onClick={() => handleSuggestionClick(suggestion.prompt)}
+                      className="text-xs px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg transition-colors border border-slate-700 hover:border-slate-600 flex items-center gap-1"
+                    >
+                      {suggestion.label}
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Input */}
             <div className="p-4 border-t border-slate-800 bg-slate-900">
