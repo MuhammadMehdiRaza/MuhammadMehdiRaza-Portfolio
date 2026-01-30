@@ -30,7 +30,7 @@ const chatbotResponses = {
     response: "I am a **3rd-year Software Engineering student** at GIKI, maintaining a **3.69 GPA**.\n\nI graduated my matriculation and intermediate from **PISK (Pakistan International School Al Khobar)**. In matric I achieved **99%** and secured **2nd position** in the entire school, and in intermediate I got **85%** with **3rd position** (FBISE Board).\n\nI have recently completed an **8-week internship at KFUPM** where I worked on LLM optimization and AI research.\n\nI am immediately open to internship or full-time opportunities where I can contribute to the growing AI ecosystem! 🎯"
   },
   experience: {
-    patterns: ["experience", "internship", "research", "kfupm", "sdaia", "work", "job"],
+    patterns: ["experience", "internship", "research", "kfupm", "sdaia", "work", "job", "tell me about your research", "research & internships", "internships"],
     response: "I served as an **AI Research Intern at KFUPM-SDAIA** (Summer 2025), focusing on LLM optimization using the DSPy framework. My research on 'Entity Sentiment Classification' was recently presented at the **Engitek '25 conference** and is awaiting publication on IEEE Xplore. I also serve as the **Tech Lead** for the AI Frontier Society at GIKI."
   },
   skills: {
