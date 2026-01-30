@@ -70,7 +70,7 @@ const chatbotResponses = {
     response: "You can reach me at:\n\n📧 **Email**: muhammadmehdiraza351@gmail.com\n\nAlso available on:\n- 💼 LinkedIn\n- 💻 GitHub\n\nFeel free to reach out! 😊"
   },
   default: {
-    response: "That's interesting! Let me share what I can help with:\n\n- 🎓 My **3.69 GPA** at GIKI\n- 🔬 **KFUPM-SDAIA internship** on LLM optimization\n- 💻 **Projects**: Streamify, CrowdServe, SehatSathi\n- 🤖 **AI skills**: Deep Learning, NLP, DSPy\n- 🚀 **Tech Lead** at AI Frontier Society\n\nFeel free to ask about any of these! 🌟"
+    response: "I'm not sure I understand that question. You can ask me about:\n\n• My skills and experience\n• My projects\n• Contact information (email, WhatsApp, social links)\n• My education and certifications\n• Or see suggested questions\n\nOr feel free to explore my portfolio! 🌟"
   }
 };
 
