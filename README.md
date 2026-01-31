@@ -1,19 +1,25 @@
-# Muhammad Mehdi Raza - Portfolio
+# Portfolio - Muhammad Mehdi Raza
 
-A professional, single-page portfolio built with **Next.js 15**, **Tailwind CSS**, and **Framer Motion**. Optimized for Vercel deployment with HCI principles: F-pattern scannability, high-contrast typography, and intuitive interactions.
+Modern portfolio website showcasing professional experience, projects, and technical expertise. Built with Next.js 15, TypeScript, and Tailwind CSS.
 
-![Portfolio Preview](./public/preview.png)
+## Tech Stack
 
-## ✨ Features
+- **Framework:** Next.js 15 with App Router & Turbopack
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS with dark mode support
+- **Animations:** Framer Motion
+- **Form Handling:** Web3Forms integration
 
-- **Modern Design** - Minimalist Slate/Zinc palette with Royal Blue accent
-- **Glassmorphism Navbar** - Fixed navigation with backdrop blur
-- **Smooth Animations** - Subtle 200ms fade/scale transitions with Framer Motion
-- **Bento Grid Projects** - Responsive grid layout for project showcase
-- **Mobile-First** - Fully responsive design that stacks perfectly on mobile
-- **SEO Optimized** - Proper meta tags, semantic HTML, and Open Graph support
+## Features
 
-## 🚀 Quick Start
+- Responsive design with dark/light theme toggle
+- Smooth scroll navigation with active section highlighting
+- Dynamic project and certification galleries
+- Contact form with email integration
+- SEO optimized with proper meta tags
+- Performance optimized with code splitting
+
+## Getting Started
 
 ```bash
 # Install dependencies
@@ -21,94 +27,36 @@ npm install
 
 # Run development server
 npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm start
 ```
 
-## 📁 Project Structure
+Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
 
-```
-src/
-├── app/
-│   ├── globals.css      # Global styles & utilities
-│   ├── layout.tsx       # Root layout with fonts & metadata
-│   └── page.tsx         # Main portfolio page
-├── components/
-│   ├── Navbar.tsx       # Glassmorphism navigation
-│   ├── AnimatedSection.tsx
-│   ├── ExperienceCard.tsx
-│   ├── ProjectCard.tsx
-│   ├── CertificationSection.tsx
-│   ├── TechStack.tsx
-│   └── Footer.tsx
-└── lib/
-    └── constants.ts     # ⬅️ EDIT YOUR DATA HERE
-```
+## Configuration
 
-## 🔧 Customization
+Update portfolio content in `src/lib/constants.ts`:
+- Personal information and social links
+- Work experience and research credentials
+- Projects with thumbnails and descriptions
+- Technical stack and certifications
 
-### 1. Update Your Information
+Add images to respective directories:
+- `/public/certificates/` - Certification images
+- `/public/projects/` - Project thumbnails
 
-Edit `src/lib/constants.ts` to add your:
+## Deployment
 
-- **Personal Info** - Name, title, tagline, email, GitHub, LinkedIn
-- **Certificate Paths** - Add images to `/public/certificates/`
-- **Project Thumbnails** - Add images to `/public/projects/`
-- **GitHub Links** - Update repository URLs
-- **Experience Data** - Modify work history
-- **Certifications** - Update Coursera certs and hackathon achievements
-- **Tech Stack** - Add/remove technologies
-
-### 2. Add Your Images
-
-```
-public/
-├── certificates/
-│   ├── research-cert-1.png
-│   ├── research-cert-2.png
-│   ├── research-cert-3.png
-│   └── hackathon-achievements.pdf
-└── projects/
-    ├── streamify.png
-    ├── crowdserve.png
-    ├── sehatsathi.png
-    └── digit-recognition.png
-```
-
-### 3. Customize Colors
-
-Edit `tailwind.config.ts` to change the color palette:
-
-```ts
-colors: {
-  accent: {
-    DEFAULT: "#3b82f6", // Change to your preferred accent color
-    // ...
-  }
-}
-```
-
-## 🌐 Deployment
-
-### Vercel (Recommended)
-
-1. Push to GitHub
-2. Import project on [vercel.com](https://vercel.com)
-3. Deploy automatically
+Optimized for Vercel deployment:
 
 ```bash
-# Or use Vercel CLI
-npx vercel
+npm run build
 ```
 
-## 📝 License
+Alternatively, deploy directly via [Vercel](https://vercel.com) by importing the repository.
 
-MIT License - feel free to use this for your own portfolio!
+## License
+
+MIT License
 
 ---
 
-Built with ❤️ by Muhammad Mehdi Raza
+**Muhammad Mehdi Raza** | Software Engineer & AI Researcher
