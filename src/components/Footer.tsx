@@ -11,7 +11,7 @@ export default function Footer() {
 
     return (
         <footer className="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800">
-            <div className="section-container py-12">
+            <div className="section-container py-16">
                 <div className="flex items-center justify-between">
                     {/* Left: Copyright */}
                     <p className="text-sm text-slate-700 dark:text-slate-400">

@@ -103,19 +103,6 @@ export default function ProjectCard({
                                     <span className="text-xs font-medium text-white">Demo Video</span>
                                 </div>
                             </div>
-
-                            {/* Play Button Overlay - Centered */}
-                            <div className="absolute inset-0 flex items-center justify-center z-20 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                                <div className="w-16 h-16 rounded-full bg-blue-600 hover:bg-blue-700 flex items-center justify-center shadow-2xl transition-colors duration-200">
-                                    <svg
-                                        className="w-7 h-7 text-white ml-0.5"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path d="M8 5v14l11-7z" />
-                                    </svg>
-                                </div>
-                            </div>
                         </>
                     )}
 
