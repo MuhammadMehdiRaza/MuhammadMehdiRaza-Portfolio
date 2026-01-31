@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+    darkMode: ["class"],
     content: [
         "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
         "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,29 +10,22 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                // Primary Background Colors
-                background: {
-                    DEFAULT: "#09090b", // zinc-950
-                    secondary: "#18181b", // zinc-900
-                    tertiary: "#27272a", // zinc-800
-                },
-                // Text Colors
+                background: "var(--background)",
+                card: "var(--card)",
+                "text-primary": "var(--text-primary)",
+                "text-secondary": "var(--text-secondary)",
+                border: "var(--border)",
+                primary: "var(--accent)",
+                // Keep existing slate/blue for compatibility
                 foreground: {
-                    DEFAULT: "#fafafa", // zinc-50
-                    muted: "#a1a1aa", // zinc-400
-                    subtle: "#71717a", // zinc-500
+                    DEFAULT: "var(--foreground)",
+                    muted: "var(--foreground-muted)",
+                    subtle: "var(--foreground-subtle)",
                 },
-                // Accent Color - Royal Blue
                 accent: {
-                    DEFAULT: "#3b82f6", // blue-500
-                    hover: "#2563eb", // blue-600
-                    muted: "#1d4ed8", // blue-700
-                    glow: "rgba(59, 130, 246, 0.3)",
-                },
-                // Border Colors
-                border: {
-                    DEFAULT: "#27272a", // zinc-800
-                    subtle: "#3f3f46", // zinc-700
+                    DEFAULT: "var(--accent)",
+                    hover: "var(--accent-hover)",
+                    glow: "var(--accent-glow)",
                 },
             },
             fontFamily: {

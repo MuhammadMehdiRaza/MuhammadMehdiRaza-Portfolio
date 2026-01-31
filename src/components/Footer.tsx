@@ -6,7 +6,7 @@ export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="bg-slate-950 border-t border-slate-800/50">
+        <footer className="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800">
             <div className="section-container">
 
                 {/* ========== TOP SECTION - Name & Tagline + Social ========== */}
@@ -17,7 +17,7 @@ export default function Footer() {
                         <h3 className="text-xl font-bold text-blue-500 mb-3">
                             {PERSONAL_INFO.name}
                         </h3>
-                        <p className="text-sm text-slate-400 leading-relaxed">
+                        <p className="text-sm text-slate-700 dark:text-slate-400 leading-relaxed">
                             {PERSONAL_INFO.tagline}
                         </p>
                     </div>
@@ -31,20 +31,20 @@ export default function Footer() {
                                     href={link.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-sm text-slate-400 hover:text-slate-50 transition-colors duration-200"
+                                    className="text-sm text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-50 transition-colors duration-200"
                                 >
                                     {link.name}
                                 </a>
                             ))}
                         </div>
-                        <p className="text-sm text-slate-500">
+                        <p className="text-sm text-slate-700 dark:text-slate-400">
                             © {currentYear} {PERSONAL_INFO.name}. All rights reserved.
                         </p>
                     </div>
                 </div>
 
                 {/* Divider */}
-                <div className="border-t border-slate-800/50" />
+                <div className="border-t border-slate-200 dark:border-slate-800" />
 
                 {/* ========== BOTTOM SECTION - Nav Links + Designed By ========== */}
                 <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-6">
@@ -55,7 +55,7 @@ export default function Footer() {
                             <a
                                 key={link.name}
                                 href={link.href}
-                                className="text-sm text-slate-500 hover:text-slate-50 transition-colors duration-200"
+                                className="text-sm text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-50 transition-colors duration-200"
                             >
                                 {link.name}
                             </a>
@@ -63,9 +63,9 @@ export default function Footer() {
                     </nav>
 
                     {/* Right: Designed & Built By */}
-                    <p className="text-sm text-slate-500">
+                    <p className="text-sm text-slate-700 dark:text-slate-400">
                         Designed & Built by{" "}
-                        <span className="font-medium text-slate-300">{PERSONAL_INFO.name}</span>
+                        <span className="font-medium text-slate-700 dark:text-slate-400">{PERSONAL_INFO.name}</span>
                     </p>
                 </div>
             </div>

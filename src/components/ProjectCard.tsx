@@ -73,13 +73,13 @@ export default function ProjectCard({
                 viewport={{ once: true }}
                 whileHover={{ y: -8 }}
                 onClick={handleCardClick}
-                className={`group relative overflow-hidden rounded-xl bg-slate-900/50 backdrop-blur-md border border-slate-800 hover:border-blue-600/30 hover:shadow-[0_0_20px_rgba(37,99,235,0.15)] transition-all duration-200 ${hasVideo ? "cursor-pointer" : ""
+                className={`group relative overflow-hidden rounded-xl bg-white dark:bg-slate-900/50 dark:backdrop-blur-md border border-slate-200 dark:border-slate-800 hover:border-blue-600/40 shadow-sm dark:shadow-none hover:shadow-[0_0_20px_rgba(37,99,235,0.2)] transition-all duration-300 ease-in-out ${hasVideo ? "cursor-pointer" : ""
                     }`}
             >
                 {/* ========== Video/Image Container - aspect-video to prevent layout shift ========== */}
-                <div className="relative w-full aspect-video overflow-hidden rounded-t-xl bg-slate-800">
+                <div className="relative w-full aspect-video overflow-hidden rounded-t-xl bg-slate-100 dark:bg-slate-800">
                     {/* Skeleton Placeholder */}
-                    <div className="absolute inset-0 bg-slate-800 animate-pulse z-0" />
+                    <div className="absolute inset-0 bg-slate-100 dark:bg-slate-800 animate-pulse z-0" />
 
                     {hasVideo && videoSrc && isInView ? (
                         <>
@@ -136,7 +136,7 @@ export default function ProjectCard({
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
-                            className="w-10 h-10 rounded-full bg-slate-800/80 backdrop-blur-sm flex items-center justify-center text-slate-400 hover:text-blue-500 hover:bg-slate-700 transition-all duration-200"
+                            className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800/80 backdrop-blur-sm flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-blue-500 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-200"
                             aria-label="View on GitHub"
                         >
                             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -148,10 +148,10 @@ export default function ProjectCard({
 
                 {/* Content */}
                 <div className="p-6">
-                    <h3 className="text-xl font-semibold text-slate-50 mb-3 group-hover:text-blue-500 transition-colors duration-200">
+                    <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-50 mb-3 group-hover:text-blue-500 transition-colors duration-200">
                         {title}
                     </h3>
-                    <p className="text-slate-400 text-sm leading-relaxed mb-5 line-clamp-3">
+                    <p className="text-slate-700 dark:text-slate-400 text-sm leading-relaxed mb-5 line-clamp-3">
                         {description}
                     </p>
 
@@ -160,7 +160,7 @@ export default function ProjectCard({
                         {tech.map((item) => (
                             <span
                                 key={item}
-                                className="px-3 py-1.5 text-xs font-medium text-slate-400 bg-slate-800/50 hover:bg-blue-600/10 hover:text-blue-400 rounded-full transition-colors duration-200 border border-slate-700/50"
+                                className="px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-400 bg-slate-100 dark:bg-slate-800/50 hover:bg-blue-600/10 hover:text-blue-400 rounded-full transition-colors duration-200 border border-slate-200 dark:border-slate-700/50"
                             >
                                 {item}
                             </span>

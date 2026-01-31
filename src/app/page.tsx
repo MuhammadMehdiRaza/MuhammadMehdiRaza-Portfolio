@@ -22,7 +22,7 @@ const Chatbot = dynamic(() => import("@/components/Chatbot"), { ssr: false });
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-slate-950">
+    <main className="min-h-screen bg-white dark:bg-slate-950 transition-colors duration-300">
       <Navbar />
 
       {/* ========== HERO SECTION ========== */}
@@ -46,7 +46,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-              className="text-xl sm:text-2xl text-slate-400 font-medium mb-6"
+              className="text-xl sm:text-2xl text-slate-700 dark:text-slate-400 font-medium mb-6"
             >
               {PERSONAL_INFO.title}
             </motion.p>
@@ -56,7 +56,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-              className="text-base text-slate-500 max-w-2xl mx-auto mb-10 leading-relaxed"
+              className="text-base text-slate-600 dark:text-slate-500 max-w-2xl mx-auto mb-10 leading-relaxed"
             >
               {PERSONAL_INFO.tagline}
             </motion.p>
@@ -76,7 +76,7 @@ export default function Home() {
               </a>
               <a
                 href="#contact"
-                className="px-8 py-3 text-base font-medium text-slate-400 border border-slate-700 hover:border-slate-500 hover:text-slate-50 rounded-lg transition-all duration-200"
+                className="px-8 py-3 text-base font-medium text-slate-700 dark:text-slate-400 border border-slate-300 dark:border-slate-700 hover:border-blue-500 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-50 rounded-lg transition-all duration-200"
               >
                 Get in Touch
               </a>
@@ -102,7 +102,7 @@ export default function Home() {
       </section>
 
       {/* ========== EXPERIENCE SECTION ========== */}
-      <section id="experience" className="py-24 bg-slate-900/30">
+      <section id="experience" className="py-24 bg-white dark:bg-slate-900/30">
         <div className="section-container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -110,10 +110,10 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-section text-slate-50 mb-2">
+            <h2 className="text-section text-slate-900 dark:text-slate-50 mb-2">
               Work & Research
             </h2>
-            <p className="text-base text-slate-400 mb-12 max-w-2xl">
+            <p className="text-base text-slate-700 dark:text-slate-400 mb-12 max-w-2xl">
               Professional experience in AI research, technical leadership, and cross-functional collaboration.
             </p>
           </motion.div>
@@ -136,7 +136,7 @@ export default function Home() {
       </section>
 
       {/* ========== PROJECTS SECTION ========== */}
-      <section id="projects" className="py-24">
+      <section id="projects" className="py-24 bg-white dark:bg-slate-950">
         <div className="section-container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -144,10 +144,10 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-section text-slate-50 mb-2">
+            <h2 className="text-section text-slate-900 dark:text-slate-50 mb-2">
               Selected Projects
             </h2>
-            <p className="text-base text-slate-400 mb-12 max-w-2xl">
+            <p className="text-base text-slate-700 dark:text-slate-400 mb-12 max-w-2xl">
               A collection of projects showcasing expertise in full-stack development, data structures, and machine learning.
             </p>
           </motion.div>
@@ -180,7 +180,7 @@ export default function Home() {
               href={PERSONAL_INFO.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="group px-8 py-3 text-base font-medium text-slate-50 bg-slate-800/50 hover:bg-blue-600 border border-slate-700 hover:border-blue-600 rounded-lg transition-all duration-200 hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] flex items-center gap-2"
+              className="group px-8 py-3 text-base font-medium text-slate-800 dark:text-slate-200 hover:text-white bg-slate-100 dark:bg-slate-800/50 hover:bg-blue-600 border border-slate-200 dark:border-slate-700 hover:border-blue-600 rounded-lg transition-all duration-200 hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] flex items-center gap-2"
             >
               <span>View More Projects</span>
               <svg
@@ -202,7 +202,7 @@ export default function Home() {
       </section>
 
       {/* ========== CREDENTIALS SECTION ========== */}
-      <section id="credentials" className="py-24 bg-slate-900/30">
+      <section id="credentials" className="py-24 bg-white dark:bg-slate-900/30">
         <div className="section-container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -210,10 +210,10 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-section text-slate-50 mb-2">
+            <h2 className="text-section text-slate-900 dark:text-slate-50 mb-2">
               Credentials
             </h2>
-            <p className="text-base text-slate-400 mb-12 max-w-2xl">
+            <p className="text-base text-slate-700 dark:text-slate-400 mb-12 max-w-2xl">
               Professional certifications and hackathon achievements in AI, algorithms, and software design.
             </p>
           </motion.div>
@@ -223,7 +223,7 @@ export default function Home() {
       </section>
 
       {/* ========== TECH STACK SECTION ========== */}
-      <section id="techstack" className="py-24">
+      <section id="techstack" className="py-24 bg-white dark:bg-slate-950">
         <div className="section-container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -231,10 +231,10 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-section text-slate-50 mb-2">
+            <h2 className="text-section text-slate-900 dark:text-slate-50 mb-2">
               Technical Stack
             </h2>
-            <p className="text-base text-slate-400 mb-12 max-w-2xl">
+            <p className="text-base text-slate-700 dark:text-slate-400 mb-12 max-w-2xl">
               Technologies and tools I work with to build scalable, efficient solutions.
             </p>
           </motion.div>

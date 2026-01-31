@@ -179,17 +179,17 @@ export default function ResearchCredentialsGallery() {
     return (
         <>
             {/* Gallery Grid */}
-            <div className="mt-6 pt-6 border-t border-slate-800">
+            <div className="mt-6 pt-6 border-t border-border">
                 {/* Header */}
                 <div className="flex items-center gap-3 mb-5">
                     <div className="w-8 h-8 rounded-lg bg-blue-600/10 border border-blue-500/30 flex items-center justify-center">
-                        <svg className="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                         </svg>
                     </div>
                     <div>
-                        <h4 className="text-sm font-semibold text-slate-100">Research Credentials</h4>
-                        <p className="text-xs text-slate-500">{RESEARCH_CERTIFICATES.length} verified certificates</p>
+                        <h4 className="text-sm font-semibold text-text-primary">Research Credentials</h4>
+                        <p className="text-xs text-text-secondary">{RESEARCH_CERTIFICATES.length} verified certificates</p>
                     </div>
                 </div>
 
@@ -203,10 +203,10 @@ export default function ResearchCredentialsGallery() {
                             transition={{ duration: 0.4, delay: index * 0.08 }}
                             viewport={{ once: true }}
                             whileHover={{ y: -6, scale: 1.02 }}
-                            className="rounded-xl bg-slate-900/60 backdrop-blur-md border border-slate-800 hover:border-blue-500/50 hover:shadow-[0_0_25px_rgba(37,99,235,0.2)] transition-all duration-300 overflow-hidden group flex flex-col"
+                            className="rounded-xl bg-white dark:bg-slate-900/50 dark:backdrop-blur-md border border-slate-200 dark:border-slate-800 hover:border-blue-600/40 shadow-sm dark:shadow-none hover:shadow-[0_0_25px_rgba(37,99,235,0.2)] transition-all duration-300 ease-in-out overflow-hidden group flex flex-col"
                         >
                             {/* Thumbnail */}
-                            <div className="relative h-28 w-full overflow-hidden bg-slate-800">
+                            <div className="relative h-28 w-full overflow-hidden bg-slate-200 dark:bg-slate-800">
                                 <Image
                                     src={cert.thumbnail}
                                     alt={cert.title}
@@ -215,7 +215,7 @@ export default function ResearchCredentialsGallery() {
                                     className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
                                     sizes="(max-width: 640px) 100vw, 33vw"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-100/80 dark:from-slate-900/80 to-transparent" />
                                 <div className="absolute top-2 right-2 px-2 py-0.5 bg-blue-600/90 backdrop-blur-sm rounded text-[9px] font-semibold text-white uppercase tracking-wider">
                                     {cert.organization}
                                 </div>
@@ -223,19 +223,19 @@ export default function ResearchCredentialsGallery() {
 
                             {/* Card Content */}
                             <div className="p-4 flex-1 flex flex-col">
-                                <h5 className="text-sm font-bold text-blue-400 line-clamp-2 mb-1">
+                                <h5 className="text-sm font-bold text-blue-600 dark:text-blue-400 line-clamp-2 mb-1">
                                     {cert.title}
                                 </h5>
-                                <p className="text-xs text-slate-400 mb-2">
+                                <p className="text-xs text-text-secondary mb-2">
                                     {cert.subtitle}
                                 </p>
-                                <p className="text-[11px] text-slate-500 leading-relaxed mb-3 line-clamp-2">
+                                <p className="text-[11px] text-text-secondary/70 leading-relaxed mb-3 line-clamp-2">
                                     {cert.impact}
                                 </p>
 
                                 <button
                                     onClick={() => openModal(cert)}
-                                    className="mt-auto inline-flex items-center justify-center gap-2 w-full px-3 py-2.5 text-xs font-medium text-slate-300 bg-slate-800/80 hover:bg-blue-600 hover:text-white border border-slate-700 hover:border-blue-500 rounded-lg transition-all duration-200"
+                                    className="mt-auto inline-flex items-center justify-center gap-2 w-full px-3 py-2.5 text-xs font-medium text-slate-800 dark:text-slate-300 bg-slate-100 dark:bg-slate-800/80 hover:bg-blue-600 hover:text-white border border-slate-200 dark:border-slate-700 hover:border-blue-500 rounded-lg transition-all duration-200"
                                 >
                                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />

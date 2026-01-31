@@ -37,10 +37,10 @@ export default function CertificationSection() {
                             transition={{ duration: 0.4, delay: index * 0.08 }}
                             viewport={{ once: true }}
                             whileHover={{ y: -6, scale: 1.02 }}
-                            className="rounded-xl bg-slate-900/60 backdrop-blur-md border border-slate-800 hover:border-blue-600/40 hover:shadow-[0_0_30px_rgba(37,99,235,0.15)] transition-all duration-300 overflow-hidden group flex flex-col"
+                            className="rounded-xl bg-white dark:bg-slate-900/60 dark:backdrop-blur-md border border-slate-200 dark:border-slate-800 hover:border-blue-600/40 shadow-sm dark:shadow-none hover:shadow-[0_0_30px_rgba(37,99,235,0.2)] transition-all duration-300 ease-in-out overflow-hidden group flex flex-col"
                         >
                             {/* Certificate Thumbnail Image */}
-                            <div className="relative h-40 w-full overflow-hidden bg-slate-800">
+                            <div className="relative h-40 w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
                                 <Image
                                     src={cert.thumbnail}
                                     alt={cert.name}
@@ -55,7 +55,7 @@ export default function CertificationSection() {
                             {/* Card Content */}
                             <div className="p-4 flex-1 flex flex-col">
                                 {/* Certificate Name */}
-                                <h4 className="text-sm font-semibold text-slate-100 line-clamp-2 mb-2 group-hover:text-blue-300 transition-colors duration-200">
+                                <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-50 line-clamp-2 mb-2 group-hover:text-blue-500 transition-colors duration-200">
                                     {cert.name}
                                 </h4>
 
@@ -64,7 +64,7 @@ export default function CertificationSection() {
                                     {cert.tags.map((tag) => (
                                         <span
                                             key={tag}
-                                            className="px-2 py-0.5 text-[10px] font-medium text-blue-400 bg-blue-500/10 border border-blue-500/20 rounded-full uppercase tracking-wide"
+                                            className="px-2 py-0.5 text-[10px] font-medium text-blue-600 dark:text-blue-400 bg-blue-500/10 dark:bg-blue-500/10 border border-blue-500/30 dark:border-blue-500/20 rounded-full uppercase tracking-wide"
                                         >
                                             {tag}
                                         </span>
@@ -76,7 +76,7 @@ export default function CertificationSection() {
                                     href={cert.shareUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="mt-auto inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 text-sm font-medium text-slate-300 bg-slate-800/80 hover:bg-blue-600 hover:text-white border border-slate-700 hover:border-blue-500 rounded-lg transition-all duration-200"
+                                    className="mt-auto inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 text-sm font-medium text-slate-800 dark:text-slate-300 bg-slate-100 dark:bg-slate-800/80 hover:bg-blue-600 hover:text-white border border-slate-200 dark:border-slate-700 hover:border-blue-500 rounded-lg transition-all duration-200"
                                 >
                                     <svg
                                         className="w-4 h-4"
@@ -101,7 +101,7 @@ export default function CertificationSection() {
 
             {/* Hackathon Achievements - Highlighted */}
             <div>
-                <h3 className="text-lg font-semibold text-slate-50 mb-6">
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-50 mb-6">
                     Hackathon Achievements
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -113,12 +113,12 @@ export default function CertificationSection() {
                             transition={{ duration: 0.4, delay: index * 0.08 }}
                             viewport={{ once: true }}
                             whileHover={{ y: -8 }}
-                            className="p-4 rounded-xl bg-slate-900/50 backdrop-blur-md border border-yellow-500/20 hover:border-yellow-500/40 hover:shadow-[0_0_20px_rgba(234,179,8,0.15)] transition-all duration-200 flex items-center gap-4 group"
+                            className="p-4 rounded-xl bg-white dark:bg-slate-900/50 dark:backdrop-blur-md border border-yellow-400/30 dark:border-yellow-500/20 hover:border-yellow-500/50 shadow-sm dark:shadow-none hover:shadow-[0_0_20px_rgba(234,179,8,0.2)] transition-all duration-300 ease-in-out flex items-center gap-4 group"
                         >
                             {/* Trophy Icon */}
-                            <div className="w-12 h-12 min-w-[3rem] rounded-xl bg-yellow-500/10 flex items-center justify-center shrink-0 group-hover:bg-yellow-500 group-hover:shadow-[0_0_20px_rgba(234,179,8,0.3)] transition-all duration-200">
+                            <div className="w-12 h-12 min-w-[3rem] rounded-xl bg-yellow-500/10 flex items-center justify-center shrink-0 group-hover:bg-yellow-500 group-hover:shadow-[0_0_20px_rgba(234,179,8,0.3)] transition-all duration-300">
                                 <svg
-                                    className="w-6 h-6 text-yellow-500 group-hover:text-white transition-colors duration-200"
+                                    className="w-6 h-6 text-yellow-500 group-hover:text-white transition-colors duration-300"
                                     fill="currentColor"
                                     viewBox="0 0 24 24"
                                 >
@@ -126,10 +126,10 @@ export default function CertificationSection() {
                                 </svg>
                             </div>
                             <div className="min-w-0 flex-1">
-                                <p className="text-sm font-medium text-slate-50 line-clamp-2 group-hover:text-yellow-400 transition-colors duration-200">
+                                <p className="text-sm font-medium text-slate-900 dark:text-slate-50 line-clamp-2 group-hover:text-yellow-500 transition-colors duration-300">
                                     {achievement.name}
                                 </p>
-                                <p className="text-xs text-slate-500 mt-1">
+                                <p className="text-xs text-slate-700 dark:text-slate-400 mt-1">
                                     {achievement.event} • {achievement.year}
                                 </p>
                             </div>

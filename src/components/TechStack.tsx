@@ -55,8 +55,8 @@ export default function TechStack() {
                         key={tab.key}
                         onClick={() => setActiveTab(tab.key)}
                         className={`relative px-6 py-3 text-sm font-semibold rounded-lg transition-all duration-300 ${activeTab === tab.key
-                            ? "text-slate-50 bg-blue-600 shadow-[0_0_20px_rgba(37,99,235,0.3)]"
-                            : "text-slate-400 bg-slate-800/50 hover:text-slate-50 hover:bg-slate-800"
+                            ? "text-white bg-blue-600 shadow-[0_0_20px_rgba(37,99,235,0.3)]"
+                            : "text-slate-800 dark:text-slate-300 bg-slate-100 dark:bg-slate-800/50 hover:text-slate-900 dark:hover:text-slate-50 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700/50"
                             }`}
                     >
                         {tab.label}
@@ -92,7 +92,7 @@ export default function TechStack() {
                                     y: -10,
                                     boxShadow: "0 0 20px rgba(37, 99, 235, 0.3)",
                                 }}
-                                className="group relative p-6 rounded-xl bg-slate-900/50 backdrop-blur-md border border-slate-800 hover:border-blue-600/50 transition-all duration-300 flex flex-col items-center justify-center gap-3 cursor-default"
+                                className="group relative p-6 rounded-xl bg-white dark:bg-slate-900/50 dark:backdrop-blur-md border border-slate-200 dark:border-slate-800 hover:border-blue-600/50 shadow-sm dark:shadow-none transition-all duration-300 flex flex-col items-center justify-center gap-3 cursor-default"
                             >
                                 {/* Icon */}
                                 <div className="w-12 h-12 flex items-center justify-center text-blue-500 group-hover:text-blue-400 transition-colors duration-300">
@@ -100,7 +100,7 @@ export default function TechStack() {
                                 </div>
 
                                 {/* Name */}
-                                <span className="text-sm font-medium text-slate-200 text-center leading-tight">
+                                <span className="text-sm font-medium text-text-primary text-center leading-tight">
                                     {item.name}
                                 </span>
                             </motion.div>

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NAV_LINKS, PERSONAL_INFO } from "@/lib/constants";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -22,16 +23,35 @@ export default function Navbar() {
     useEffect(() => {
         const observerOptions = {
             root: null,
-            rootMargin: "-20% 0px -40% 0px",
-            threshold: [0.2, 0.5, 0.8],
+            rootMargin: "-15% 0px -50% 0px",
+            threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
         };
 
         const intersectionObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    setActiveSection(`#${entry.target.id}`);
-                }
-            });
+            // Get all currently intersecting entries
+            const intersectingEntries = entries.filter((entry) => entry.isIntersecting);
+            
+            if (intersectingEntries.length > 0) {
+                // Find the section closest to the top of the viewport (within the visible area)
+                let bestEntry = intersectingEntries[0];
+                let bestScore = -Infinity;
+                
+                intersectingEntries.forEach((entry) => {
+                    const rect = entry.target.getBoundingClientRect();
+                    const distanceFromTop = Math.abs(rect.top);
+                    
+                    // Score based on intersection ratio and proximity to top
+                    // Higher intersection ratio is better, closer to top is better
+                    const score = entry.intersectionRatio * 100 - distanceFromTop * 0.1;
+                    
+                    if (score > bestScore) {
+                        bestScore = score;
+                        bestEntry = entry;
+                    }
+                });
+                
+                setActiveSection(`#${bestEntry.target.id}`);
+            }
         }, observerOptions);
 
         // Function to observe all sections
@@ -82,11 +102,11 @@ export default function Navbar() {
                     </div>
                     {/* Name + Title */}
                     <div className="hidden sm:flex items-center gap-2">
-                        <span className="text-base font-bold text-slate-50 group-hover:text-blue-400 transition-colors duration-200">
+                        <span className="text-base font-bold text-slate-900 dark:text-slate-50 group-hover:text-blue-400 transition-colors duration-200">
                             {PERSONAL_INFO.name}
                         </span>
-                        <span className="text-slate-600">|</span>
-                        <span className="text-slate-400 text-sm">
+                        <span className="text-slate-300 dark:text-slate-700">|</span>
+                        <span className="text-slate-700 dark:text-slate-400 text-sm">
                             Software Engineer
                         </span>
                     </div>
@@ -100,12 +120,13 @@ export default function Navbar() {
                             href={link.href}
                             className={`relative text-sm py-2 transition-colors duration-200 nav-link-underline ${isActive(link.href)
                                 ? "text-blue-500 font-medium active"
-                                : "text-slate-400 hover:text-slate-50"
+                                : "text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-50"
                                 }`}
                         >
                             {link.name}
                         </a>
                     ))}
+                    <ThemeToggle />
                     <a
                         href={PERSONAL_INFO.github}
                         target="_blank"
