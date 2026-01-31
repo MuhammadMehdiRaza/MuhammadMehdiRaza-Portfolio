@@ -21,11 +21,11 @@ export default function Footer() {
                     {/* Right: Scroll to Top Button */}
                     <button
                         onClick={scrollToTop}
-                        className="w-14 h-14 flex items-center justify-center rounded-xl bg-blue-500 hover:bg-blue-600 text-white transition-colors duration-200 shadow-lg hover:shadow-xl"
+                        className="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-500 hover:bg-blue-600 text-white transition-colors duration-200 shadow-lg hover:shadow-xl"
                         aria-label="Scroll to top"
                     >
                         <svg
-                            className="w-6 h-6"
+                            className="w-5 h-5"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
