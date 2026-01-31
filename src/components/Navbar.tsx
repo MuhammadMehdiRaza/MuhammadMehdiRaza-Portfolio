@@ -23,8 +23,8 @@ export default function Navbar() {
     useEffect(() => {
         const observerOptions = {
             root: null,
-            rootMargin: "-15% 0px -50% 0px",
-            threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+            rootMargin: "-20% 0px -40% 0px",
+            threshold: Array.from({ length: 21 }, (_, i) => i * 0.05), // [0, 0.05, 0.1, ..., 1]
         };
 
         const intersectionObserver = new IntersectionObserver((entries) => {
@@ -32,17 +32,22 @@ export default function Navbar() {
             const intersectingEntries = entries.filter((entry) => entry.isIntersecting);
             
             if (intersectingEntries.length > 0) {
-                // Find the section closest to the top of the viewport (within the visible area)
+                // Find the best entry based on position and visibility
                 let bestEntry = intersectingEntries[0];
                 let bestScore = -Infinity;
                 
                 intersectingEntries.forEach((entry) => {
                     const rect = entry.target.getBoundingClientRect();
-                    const distanceFromTop = Math.abs(rect.top);
+                    const windowHeight = window.innerHeight;
                     
-                    // Score based on intersection ratio and proximity to top
-                    // Higher intersection ratio is better, closer to top is better
-                    const score = entry.intersectionRatio * 100 - distanceFromTop * 0.1;
+                    // Calculate center position (how close the section is to center of viewport)
+                    const sectionCenter = rect.top + rect.height / 2;
+                    const viewportCenter = windowHeight / 2;
+                    const distanceFromCenter = Math.abs(sectionCenter - viewportCenter);
+                    
+                    // Score: prioritize sections closer to viewport center with higher intersection ratio
+                    const centerScore = 1 - (distanceFromCenter / windowHeight);
+                    const score = (entry.intersectionRatio * 50) + (centerScore * 50);
                     
                     if (score > bestScore) {
                         bestScore = score;
