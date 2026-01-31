@@ -19,70 +19,69 @@ export default function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // Intersection Observer for scroll-spy
+    // Scroll-spy: Track active section based on scroll position
     useEffect(() => {
-        const observerOptions = {
-            root: null,
-            rootMargin: "-20% 0px -40% 0px",
-            threshold: Array.from({ length: 21 }, (_, i) => i * 0.05), // [0, 0.05, 0.1, ..., 1]
-        };
-
-        const intersectionObserver = new IntersectionObserver((entries) => {
-            // Get all currently intersecting entries
-            const intersectingEntries = entries.filter((entry) => entry.isIntersecting);
-            
-            if (intersectingEntries.length > 0) {
-                // Find the best entry based on position and visibility
-                let bestEntry = intersectingEntries[0];
-                let bestScore = -Infinity;
-                
-                intersectingEntries.forEach((entry) => {
-                    const rect = entry.target.getBoundingClientRect();
-                    const windowHeight = window.innerHeight;
-                    
-                    // Calculate center position (how close the section is to center of viewport)
-                    const sectionCenter = rect.top + rect.height / 2;
-                    const viewportCenter = windowHeight / 2;
-                    const distanceFromCenter = Math.abs(sectionCenter - viewportCenter);
-                    
-                    // Score: prioritize sections closer to viewport center with higher intersection ratio
-                    const centerScore = 1 - (distanceFromCenter / windowHeight);
-                    const score = (entry.intersectionRatio * 50) + (centerScore * 50);
-                    
-                    if (score > bestScore) {
-                        bestScore = score;
-                        bestEntry = entry;
-                    }
-                });
-                
-                setActiveSection(`#${bestEntry.target.id}`);
-            }
-        }, observerOptions);
-
-        // Function to observe all sections
-        const observeAllSections = () => {
+        const handleScroll = () => {
             const sections = document.querySelectorAll("section[id]");
-            sections.forEach((section) => intersectionObserver.observe(section));
+            const scrollPosition = window.scrollY + 150; // Offset for navbar height
+            
+            let currentSection = "";
+            
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                
+                // Check if we're within this section's boundaries
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    currentSection = `#${section.id}`;
+                }
+            });
+            
+            // If we've scrolled to the very bottom, ensure last section is active
+            if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10) {
+                const lastSection = sections[sections.length - 1];
+                if (lastSection) {
+                    currentSection = `#${lastSection.id}`;
+                }
+            }
+            
+            if (currentSection && currentSection !== activeSection) {
+                setActiveSection(currentSection);
+            }
         };
 
-        // Initial observation
-        observeAllSections();
-
-        // Watch for dynamically added sections (like Contact loaded with dynamic import)
-        const mutationObserver = new MutationObserver(() => {
-            observeAllSections();
+        // Initial check
+        handleScroll();
+        
+        // Add scroll listener with throttling for performance
+        let ticking = false;
+        const scrollListener = () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    handleScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        };
+        
+        window.addEventListener("scroll", scrollListener);
+        
+        // Re-check when new sections might be added (e.g., dynamic imports)
+        const observer = new MutationObserver(() => {
+            handleScroll();
         });
-
-        mutationObserver.observe(document.body, {
+        
+        observer.observe(document.body, {
             childList: true,
             subtree: true,
         });
-
+        
         return () => {
-            intersectionObserver.disconnect();
-            mutationObserver.disconnect();
+            window.removeEventListener("scroll", scrollListener);
+            observer.disconnect();
         };
-    }, []);
+    }, [activeSection]);
 
     const isActive = (href: string) => activeSection === href;
 
