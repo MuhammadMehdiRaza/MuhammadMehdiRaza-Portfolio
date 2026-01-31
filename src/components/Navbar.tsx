@@ -28,8 +28,9 @@ export default function Navbar() {
             let currentSection = "";
             
             sections.forEach((section) => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.offsetHeight;
+                const element = section as HTMLElement;
+                const sectionTop = element.offsetTop;
+                const sectionHeight = element.offsetHeight;
                 
                 // Check if we're within this section's boundaries
                 if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
