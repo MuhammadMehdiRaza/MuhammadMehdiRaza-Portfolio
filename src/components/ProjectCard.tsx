@@ -126,10 +126,10 @@ export default function ProjectCard({
                         {hasVideo && videoSrc && (
                             <button
                                 onClick={handleCardClick}
-                                className="w-14 h-14 rounded-full bg-blue-600 hover:bg-blue-700 flex items-center justify-center text-white transition-all duration-200 shadow-2xl"
+                                className="w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 flex items-center justify-center text-white transition-all duration-200 shadow-2xl"
                                 aria-label="Play demo video"
                             >
-                                <svg className="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M8 5v14l11-7z" />
                                 </svg>
                             </button>
