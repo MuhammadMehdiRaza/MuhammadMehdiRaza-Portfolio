@@ -191,12 +191,16 @@ export default function Navbar() {
                                     onClick={() => setIsMobileMenuOpen(false)}
                                     className={`px-4 py-3 rounded-lg transition-all duration-200 ${isActive(link.href)
                                         ? "text-blue-500 bg-blue-500/10 font-medium"
-                                        : "text-slate-400 hover:text-slate-50 hover:bg-slate-800/50"
+                                        : "text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800/50"
                                         }`}
                                 >
                                     {link.name}
                                 </a>
                             ))}
+                            <div className="flex items-center gap-2 px-4 py-3">
+                                <span className="text-sm text-slate-700 dark:text-slate-400">Theme:</span>
+                                <ThemeToggle />
+                            </div>
                             <a
                                 href={PERSONAL_INFO.github}
                                 target="_blank"
