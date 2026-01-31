@@ -81,21 +81,19 @@ export default function ProjectCard({
                     {/* Skeleton Placeholder */}
                     <div className="absolute inset-0 bg-slate-100 dark:bg-slate-800 animate-pulse z-0" />
 
-                    {hasVideo && videoSrc && isInView ? (
+                    {/* Static Thumbnail with priority for above-the-fold */}
+                    <Image
+                        src={thumbnail}
+                        alt={`${title} thumbnail`}
+                        fill
+                        priority={index < 2}
+                        loading={index < 2 ? "eager" : "lazy"}
+                        className={`object-cover transition-transform duration-500 group-hover:scale-110 z-10`}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                    
+                    {hasVideo && videoSrc && (
                         <>
-                            {/* Lazy Loaded Video Preview */}
-                            <video
-                                src={videoSrc}
-                                muted
-                                loop
-                                playsInline
-                                autoPlay
-                                preload="none"
-                                onLoadedData={() => setVideoLoaded(true)}
-                                className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-110 z-10 ${videoLoaded ? "opacity-100" : "opacity-0"
-                                    }`}
-                            />
-                            
                             {/* Demo Video Badge - Top Left */}
                             <div className="absolute top-4 left-4 z-30">
                                 <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900/90 backdrop-blur-sm border border-slate-700">
@@ -110,7 +108,7 @@ export default function ProjectCard({
                             <div className="absolute inset-0 flex items-center justify-center z-20 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                                 <div className="w-16 h-16 rounded-full bg-blue-600 hover:bg-blue-700 flex items-center justify-center shadow-2xl transition-colors duration-200">
                                     <svg
-                                        className="w-8 h-8 text-white ml-1"
+                                        className="w-7 h-7 text-white ml-0.5"
                                         fill="currentColor"
                                         viewBox="0 0 24 24"
                                     >
@@ -118,22 +116,6 @@ export default function ProjectCard({
                                     </svg>
                                 </div>
                             </div>
-                        </>
-                    ) : (
-                        <>
-                            {/* Static Thumbnail with priority for above-the-fold */}
-                            <Image
-                                src={thumbnail}
-                                alt={`${title} thumbnail`}
-                                fill
-                                priority={index < 2}
-                                loading={index < 2 ? "eager" : "lazy"}
-                                className={`object-cover transition-transform duration-500 group-hover:scale-110 z-10`}
-                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            />
-                            {!hasVideo && (
-                                <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950 opacity-40 z-0" />
-                            )}
                         </>
                     )}
 

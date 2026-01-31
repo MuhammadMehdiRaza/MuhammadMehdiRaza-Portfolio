@@ -11,7 +11,7 @@ export default function Footer() {
 
     return (
         <footer className="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800">
-            <div className="section-container py-8">
+            <div className="section-container py-12">
                 <div className="flex items-center justify-between">
                     {/* Left: Copyright */}
                     <p className="text-sm text-slate-700 dark:text-slate-400">
@@ -21,7 +21,7 @@ export default function Footer() {
                     {/* Right: Scroll to Top Button */}
                     <button
                         onClick={scrollToTop}
-                        className="w-12 h-12 flex items-center justify-center rounded-lg bg-blue-500 hover:bg-blue-600 text-white transition-colors duration-200 shadow-lg hover:shadow-xl"
+                        className="w-14 h-14 flex items-center justify-center rounded-xl bg-blue-500 hover:bg-blue-600 text-white transition-colors duration-200 shadow-lg hover:shadow-xl"
                         aria-label="Scroll to top"
                     >
                         <svg
