@@ -26,10 +26,11 @@ html:not(.dark) section {
 }
 
 /* ========== NAVIGATION ========== */
-html:not(.dark) nav {
+/* Only apply background and border when scrolled (glass-nav class) */
+html:not(.dark) nav.glass-nav {
   background: rgba(255, 255, 255, 0.95) !important;
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid #e2e8f0 !important;
+  border-bottom-color: #e2e8f0 !important;
 }
 
 /* Navbar name - Make it bold and clear */
@@ -81,7 +82,6 @@ html:not(.dark) footer a {
 /* Footer navigation section - transparent background and hover effects */
 html:not(.dark) footer nav,
 html:not(.dark) footer .py-6,
-html:not(.dark) footer a[href="#contact"],
 html:not(.dark) footer a[href*="#"] {
   background-color: transparent !important;
 }
@@ -207,14 +207,14 @@ html:not(.dark) .text-slate-800 {
 
 /* ========== BUTTONS - SECONDARY ========== */
 /* "Get in Touch" and similar outline buttons */
-html:not(.dark) a[href="#contact"],
+html:not(.dark) section a[href="#contact"],
 html:not(.dark) button[class*="border"][class*="text-slate"] {
   background-color: #ffffff !important;
   color: #0f172a !important;
   border-color: #cbd5e1 !important;
 }
 
-html:not(.dark) a[href="#contact"]:hover,
+html:not(.dark) section a[href="#contact"]:hover,
 html:not(.dark) button[class*="border"][class*="text-slate"]:hover {
   background-color: #f8fafc !important;
   border-color: #2563eb !important;
@@ -437,6 +437,23 @@ html:not(.dark) a[aria-label="View on GitHub"]:hover {
   color: #ffffff !important;
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ========== DEMO VIDEO BADGE ON PROJECT CARDS ========== */
+/* Demo Video badge in light mode - light background with good contrast */
+html:not(.dark) .absolute.top-4.left-4 > div[class*="bg-slate-900"] {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(12px) !important;
+  border-color: rgba(148, 163, 184, 0.4) !important;
+}
+
+html:not(.dark) .absolute.top-4.left-4 svg.text-blue-400 {
+  color: #2563eb !important;
+}
+
+html:not(.dark) .absolute.top-4.left-4 .text-white {
+  color: #1e293b !important;
+  font-weight: 600 !important;
 }
 
 /* ========================================

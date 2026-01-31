@@ -21,68 +21,47 @@ export default function Navbar() {
 
     // Scroll-spy: Track active section based on scroll position
     useEffect(() => {
-        const handleScroll = () => {
-            const sections = document.querySelectorAll("section[id]");
-            const scrollPosition = window.scrollY + 150; // Offset for navbar height
-            
-            let currentSection = "";
-            
-            sections.forEach((section) => {
-                const element = section as HTMLElement;
-                const sectionTop = element.offsetTop;
-                const sectionHeight = element.offsetHeight;
-                
-                // Check if we're within this section's boundaries
-                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                    currentSection = `#${section.id}`;
-                }
-            });
-            
-            // If we've scrolled to the very bottom, ensure last section is active
-            if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10) {
-                const lastSection = sections[sections.length - 1];
-                if (lastSection) {
-                    currentSection = `#${lastSection.id}`;
-                }
-            }
-            
-            if (currentSection && currentSection !== activeSection) {
-                setActiveSection(currentSection);
-            }
-        };
-
-        // Initial check
-        handleScroll();
-        
-        // Add scroll listener with throttling for performance
         let ticking = false;
-        const scrollListener = () => {
+        
+        const handleScroll = () => {
             if (!ticking) {
                 window.requestAnimationFrame(() => {
-                    handleScroll();
+                    // Don't highlight anything if we're at the very top
+                    if (window.scrollY < 200) {
+                        setActiveSection("");
+                        ticking = false;
+                        return;
+                    }
+
+                    const sections = document.querySelectorAll("section[id]");
+                    const scrollPosition = window.scrollY + 200;
+                    
+                    let currentSection = "";
+                    
+                    sections.forEach((section) => {
+                        const element = section as HTMLElement;
+                        const sectionTop = element.offsetTop;
+                        const sectionHeight = element.offsetHeight;
+                        
+                        // Only highlight if we've scrolled past the section start
+                        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                            currentSection = `#${section.id}`;
+                        }
+                    });
+                    
+                    setActiveSection(currentSection);
                     ticking = false;
                 });
                 ticking = true;
             }
         };
         
-        window.addEventListener("scroll", scrollListener);
-        
-        // Re-check when new sections might be added (e.g., dynamic imports)
-        const observer = new MutationObserver(() => {
-            handleScroll();
-        });
-        
-        observer.observe(document.body, {
-            childList: true,
-            subtree: true,
-        });
+        window.addEventListener("scroll", handleScroll, { passive: true });
         
         return () => {
-            window.removeEventListener("scroll", scrollListener);
-            observer.disconnect();
+            window.removeEventListener("scroll", handleScroll);
         };
-    }, [activeSection]);
+    }, []);
 
     const isActive = (href: string) => activeSection === href;
 
@@ -91,7 +70,8 @@ export default function Navbar() {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "glass-nav py-3" : "bg-transparent py-5"
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+                isScrolled ? "glass-nav py-3 border-b" : "bg-transparent py-5 border-b border-transparent"
                 }`}
         >
             <div className="section-container flex items-center justify-between">
