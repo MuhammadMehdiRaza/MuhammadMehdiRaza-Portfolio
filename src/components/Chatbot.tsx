@@ -273,12 +273,12 @@ export default function Chatbot() {
 
             {/* Suggestions */}
             {showSuggestions && (
-              <div className="px-4 py-3 border-t border-slate-800 bg-slate-900">
+              <div className="px-4 py-3 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900">
                 <div className="flex items-center justify-between mb-2">
-                  <p className="text-xs text-slate-400 font-medium">Suggested questions</p>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 font-medium">Suggested questions</p>
                   <button
                     onClick={() => setShowSuggestions(false)}
-                    className="text-slate-400 hover:text-white transition-colors"
+                    className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -290,7 +290,7 @@ export default function Chatbot() {
                     <button
                       key={suggestion.id}
                       onClick={() => handleSuggestionClick(suggestion.prompt)}
-                      className="text-xs px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg transition-colors border border-slate-700 hover:border-slate-600 flex items-center gap-1"
+                      className="text-xs px-3 py-2 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg transition-colors border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 flex items-center gap-1"
                     >
                       {suggestion.label}
                       <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
