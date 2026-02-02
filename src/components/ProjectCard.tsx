@@ -77,7 +77,7 @@ export default function ProjectCard({
                     }`}
             >
                 {/* ========== Video/Image Container - aspect-video to prevent layout shift ========== */}
-                <div className="relative w-full aspect-video sm:aspect-video overflow-hidden rounded-t-xl bg-slate-100 dark:bg-slate-800">
+                <div className="relative w-full aspect-[4/3] sm:aspect-video overflow-hidden rounded-t-xl bg-slate-100 dark:bg-slate-800">
                     {/* Skeleton Placeholder */}
                     <div className="absolute inset-0 bg-slate-100 dark:bg-slate-800 animate-pulse z-0" />
 
@@ -96,7 +96,7 @@ export default function ProjectCard({
                         <>
                             {/* Demo Video Badge - Top Left */}
                             <div className="absolute top-2 left-2 sm:top-4 sm:left-4 z-30">
-                                <div className="flex items-center gap-1 sm:gap-2 px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-slate-900/90 dark:bg-slate-900/90 backdrop-blur-sm border border-slate-700 dark:border-slate-700">
+                                <div className="flex items-center gap-1 sm:gap-2 px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-slate-900/95 backdrop-blur-sm border border-slate-700">
                                     <svg className="w-3 h-3 sm:w-4 sm:h-4 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M8 5v14l11-7z" />
                                     </svg>
@@ -116,7 +116,7 @@ export default function ProjectCard({
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
-                            className="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-slate-900/90 backdrop-blur-sm flex items-center justify-center text-white hover:bg-slate-800 transition-all duration-200 border border-slate-700 shadow-lg"
+                            className="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-slate-900/95 backdrop-blur-sm flex items-center justify-center text-white hover:bg-slate-800 transition-all duration-200 border border-slate-700 shadow-lg"
                             aria-label="View on GitHub"
                         >
                             <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24">
