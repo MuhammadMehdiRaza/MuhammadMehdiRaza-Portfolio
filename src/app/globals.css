@@ -237,8 +237,9 @@ button:focus-visible {
 /* ========== BENTO GRID ========== */
 .bento-grid {
   display: grid;
-  gap: 1.25rem;
-  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  overflow: hidden;
 }
 
 @media (min-width: 640px) {
