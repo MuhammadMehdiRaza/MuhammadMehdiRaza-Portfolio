@@ -53,7 +53,7 @@ export default function CertificationSection() {
                             </div>
 
                             {/* Card Content */}
-                            <div className="p-2.5 sm:p-4 flex-1 flex flex-col">
+                            <div className="p-2 sm:p-4 flex-1 flex flex-col">
                                 {/* Certificate Name */}
                                 <h4 className="text-[13px] sm:text-sm font-semibold text-slate-900 dark:text-slate-50 line-clamp-2 mb-2 sm:mb-2 group-hover:text-blue-500 transition-colors duration-200 leading-snug">
                                     {cert.name}
@@ -119,7 +119,7 @@ export default function CertificationSection() {
                             transition={{ duration: 0.4, delay: index * 0.08 }}
                             viewport={{ once: true }}
                             whileHover={{ y: -8 }}
-                            className="p-2.5 sm:p-4 rounded-xl bg-white dark:bg-slate-900/50 dark:backdrop-blur-md border border-yellow-400/30 dark:border-yellow-500/20 hover:border-yellow-500/50 shadow-sm dark:shadow-none hover:shadow-[0_0_20px_rgba(234,179,8,0.2)] transition-all duration-300 ease-in-out flex items-center gap-2 sm:gap-4 group"
+                            className="p-2 sm:p-4 rounded-xl bg-white dark:bg-slate-900/50 dark:backdrop-blur-md border border-yellow-400/30 dark:border-yellow-500/20 hover:border-yellow-500/50 shadow-sm dark:shadow-none hover:shadow-[0_0_20px_rgba(234,179,8,0.2)] transition-all duration-300 ease-in-out flex items-center gap-2 sm:gap-4 group"
                         >
                             {/* Trophy Icon */}
                             <div className="w-9 h-9 sm:w-12 sm:h-12 min-w-[2.25rem] sm:min-w-[3rem] rounded-xl bg-yellow-500/10 flex items-center justify-center shrink-0 group-hover:bg-yellow-500 group-hover:shadow-[0_0_20px_rgba(234,179,8,0.3)] transition-all duration-300">

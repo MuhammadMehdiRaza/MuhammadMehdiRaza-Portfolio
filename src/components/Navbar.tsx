@@ -85,11 +85,7 @@ export default function Navbar() {
                     <div className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold text-xs shrink-0 group-hover:shadow-[0_0_15px_rgba(37,99,235,0.4)] transition-shadow duration-200">
                         MM
                     </div>
-                    {/* Mobile Name */}
-                    <span className="sm:hidden text-sm font-bold text-slate-900 dark:text-slate-50 group-hover:text-blue-400 transition-colors duration-200">
-                        M. Mehdi Raza
-                    </span>
-                    {/* Name + Title - Desktop */}
+                    {/* Name + Title */}
                     <div className="hidden sm:flex items-center gap-2">
                         <span className="text-base font-bold text-slate-900 dark:text-slate-50 group-hover:text-blue-400 transition-colors duration-200">
                             {PERSONAL_INFO.name}
