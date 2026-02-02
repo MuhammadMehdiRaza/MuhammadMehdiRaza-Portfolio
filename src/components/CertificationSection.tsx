@@ -110,7 +110,7 @@ export default function CertificationSection() {
                 <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-50 mb-6">
                     Hackathon Achievements
                 </h3>
-                <div className="grid grid-cols-2 sm:grid-cols-2 gap-2 sm:gap-4">>
+                <div className="grid grid-cols-2 sm:grid-cols-2 gap-2 sm:gap-4">
                     {HACKATHON_ACHIEVEMENTS.map((achievement, index) => (
                         <motion.div
                             key={achievement.name}
