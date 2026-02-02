@@ -168,7 +168,16 @@ export default function Navbar() {
                                 <a
                                     key={link.name}
                                     href={link.href}
-                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    onClick={(e) => {
+                                        const target = document.querySelector(link.href);
+                                        if (target) {
+                                            e.preventDefault();
+                                            setIsMobileMenuOpen(false);
+                                            setTimeout(() => {
+                                                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                            }, 300);
+                                        }
+                                    }}
                                     className={`px-4 py-3 rounded-lg transition-all duration-200 ${isActive(link.href)
                                         ? "text-blue-500 bg-blue-500/10 font-medium"
                                         : "text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800/50"

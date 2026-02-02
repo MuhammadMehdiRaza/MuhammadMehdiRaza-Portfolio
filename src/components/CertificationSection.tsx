@@ -27,7 +27,7 @@ export default function CertificationSection() {
                             transition: { staggerChildren: 0.08, delayChildren: 0.1 },
                         },
                     }}
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+                    className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5"
                 >
                     {COURSERA_CERTIFICATIONS.map((cert, index) => (
                         <motion.div
@@ -104,7 +104,7 @@ export default function CertificationSection() {
                 <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-50 mb-6">
                     Hackathon Achievements
                 </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-2 gap-3 sm:gap-4">
                     {HACKATHON_ACHIEVEMENTS.map((achievement, index) => (
                         <motion.div
                             key={achievement.name}
