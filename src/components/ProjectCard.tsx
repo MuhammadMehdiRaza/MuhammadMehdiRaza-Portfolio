@@ -77,7 +77,7 @@ export default function ProjectCard({
                     }`}
             >
                 {/* ========== Video/Image Container - aspect-video to prevent layout shift ========== */}
-                <div className="relative w-full aspect-video overflow-hidden rounded-t-xl bg-slate-100 dark:bg-slate-800">
+                <div className="relative w-full aspect-video sm:aspect-video overflow-hidden rounded-t-xl bg-slate-100 dark:bg-slate-800">
                     {/* Skeleton Placeholder */}
                     <div className="absolute inset-0 bg-slate-100 dark:bg-slate-800 animate-pulse z-0" />
 
@@ -138,24 +138,29 @@ export default function ProjectCard({
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
-                    <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-50 mb-3 group-hover:text-blue-500 transition-colors duration-200">
+                <div className="p-5 sm:p-6">
+                    <h3 className="text-lg sm:text-xl font-semibold text-slate-900 dark:text-slate-50 mb-2 sm:mb-3 group-hover:text-blue-500 transition-colors duration-200 line-clamp-2">
                         {title}
                     </h3>
-                    <p className="text-slate-700 dark:text-slate-400 text-sm leading-relaxed mb-5 line-clamp-3">
+                    <p className="text-slate-700 dark:text-slate-400 text-sm sm:text-sm leading-relaxed mb-4 sm:mb-5 line-clamp-2 sm:line-clamp-3">
                         {description}
                     </p>
 
                     {/* Tech Tags */}
-                    <div className="flex flex-wrap gap-2">
-                        {tech.map((item) => (
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                        {tech.slice(0, 4).map((item) => (
                             <span
                                 key={item}
-                                className="px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-400 bg-slate-100 dark:bg-slate-800/50 hover:bg-blue-600/10 hover:text-blue-400 rounded-full transition-colors duration-200 border border-slate-200 dark:border-slate-700/50"
+                                className="px-2.5 sm:px-3 py-1 sm:py-1.5 text-[11px] sm:text-xs font-medium text-slate-700 dark:text-slate-400 bg-slate-100 dark:bg-slate-800/50 hover:bg-blue-600/10 hover:text-blue-400 rounded-full transition-colors duration-200 border border-slate-200 dark:border-slate-700/50"
                             >
                                 {item}
                             </span>
                         ))}
+                        {tech.length > 4 && (
+                            <span className="px-2.5 sm:px-3 py-1 sm:py-1.5 text-[11px] sm:text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-500/10 rounded-full border border-blue-500/30">
+                                +{tech.length - 4}
+                            </span>
+                        )}
                     </div>
                 </div>
             </motion.div>
