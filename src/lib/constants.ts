@@ -170,7 +170,7 @@ export const COURSERA_CERTIFICATIONS = [
     name: "Advanced Learning Algorithms",
     issuer: "Coursera",
     year: "2025",
-    shareUrl: "https://coursera.org/share/456dda1d3b9a0323a5648c21c354da43",
+    shareUrl: "https://www.coursera.org/account/accomplishments/verify/WH8E205U3X43",
     thumbnail: "/certificates/cert-advanced-learning.png",
     tags: ["Neural Networks", "Deep Learning", "TensorFlow"]
   },
@@ -178,7 +178,7 @@ export const COURSERA_CERTIFICATIONS = [
     name: "Artificial Intelligence Essentials",
     issuer: "Coursera",
     year: "2026",
-    shareUrl: "https://coursera.org/share/b5a73cd65ed1c235a5c701c439c9850c",
+    shareUrl: "https://www.coursera.org/account/accomplishments/verify/TTT35LCYKWOE",
     thumbnail: "/certificates/cert-ai-essentials.png",
     tags: ["AI", "Machine Learning", "Fundamentals"]
   },
@@ -186,7 +186,7 @@ export const COURSERA_CERTIFICATIONS = [
     name: "Design Patterns",
     issuer: "Coursera",
     year: "2026",
-    shareUrl: "https://coursera.org/share/a0c427d48a585f714d69e7dbccce9f47",
+    shareUrl: "https://www.coursera.org/account/accomplishments/verify/Z48S5BPXZ7MO",
     thumbnail: "/certificates/cert-design-patterns.png",
     tags: ["OOP", "Software Design", "Java"]
   },
@@ -194,7 +194,7 @@ export const COURSERA_CERTIFICATIONS = [
     name: "Introduction to Generative AI",
     issuer: "Coursera",
     year: "2025",
-    shareUrl: "https://coursera.org/share/16f7fe7b5a169d04e6257edf7e137fc0",
+    shareUrl: "https://www.coursera.org/account/accomplishments/verify/LBLW9GYX7J0B",
     thumbnail: "/certificates/cert-gen-ai.png",
     tags: ["Generative AI", "LLMs", "Prompts"]
   },
@@ -202,7 +202,7 @@ export const COURSERA_CERTIFICATIONS = [
     name: "Object Oriented Design",
     issuer: "Coursera",
     year: "2026",
-    shareUrl: "https://coursera.org/share/111435148fe56cec27e59b65cf3e1e2a",
+    shareUrl: "https://www.coursera.org/account/accomplishments/verify/ILU3JF4OJ4TP",
     thumbnail: "/certificates/cert-ood.png",
     tags: ["OOP", "UML", "Design Principles"]
   },
@@ -210,7 +210,7 @@ export const COURSERA_CERTIFICATIONS = [
     name: "Python for Data Science, AI and Development",
     issuer: "Coursera",
     year: "2026",
-    shareUrl: "https://coursera.org/share/2dee1ed80c1f43105958cb23246749d0",
+    shareUrl: "https://www.coursera.org/account/accomplishments/verify/QXUQVM5XG7SN",
     thumbnail: "/certificates/cert-python-ds.png",
     tags: ["Python", "Data Science", "AI"]
   },
@@ -218,7 +218,7 @@ export const COURSERA_CERTIFICATIONS = [
     name: "Supervised Machine Learning",
     issuer: "Coursera",
     year: "2025",
-    shareUrl: "https://coursera.org/share/b8fb7eb754f10d5ba0cebe6920e22c8c",
+    shareUrl: "https://www.coursera.org/account/accomplishments/verify/LD5LMLS1GKHV",
     thumbnail: "/certificates/cert-supervised-ml.png",
     tags: ["ML", "Regression", "Classification"]
   },
@@ -226,7 +226,7 @@ export const COURSERA_CERTIFICATIONS = [
     name: "Technical Support Fundamentals",
     issuer: "Coursera",
     year: "2025",
-    shareUrl: "https://coursera.org/share/4f0bf91f0cc8a157f283d29cd12bd8bf",
+    shareUrl: "https://www.coursera.org/account/accomplishments/verify/NMW80BYK4PVT",
     thumbnail: "/certificates/cert-tech-support.png",
     tags: ["IT Support", "Troubleshooting", "Networking"]
   },
