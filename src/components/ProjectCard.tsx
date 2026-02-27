@@ -96,7 +96,7 @@ export default function ProjectCard({
                         <>
                             {/* Demo Video Badge - Top Left */}
                             <div className="absolute top-2 left-2 sm:top-4 sm:left-4 z-30">
-                                <div className="flex items-center gap-1 sm:gap-2 px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-slate-900/95 backdrop-blur-sm border border-slate-700">
+                                <div className="project-video-badge flex items-center gap-1 sm:gap-2 px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-slate-900/95 backdrop-blur-sm border border-slate-700">
                                     <svg className="w-3 h-3 sm:w-4 sm:h-4 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M8 5v14l11-7z" />
                                     </svg>

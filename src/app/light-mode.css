@@ -440,18 +440,18 @@ html:not(.dark) a[aria-label="View on GitHub"]:hover {
 }
 
 /* ========== DEMO VIDEO BADGE ON PROJECT CARDS ========== */
-/* Demo Video badge in light mode - light background with good contrast */
-html:not(.dark) .absolute.top-4.left-4 > div[class*="bg-slate-900"] {
+/* Demo Video badge in light mode - frosted white with dark text, works on all screen sizes */
+html:not(.dark) .project-video-badge {
   background-color: rgba(255, 255, 255, 0.95) !important;
-  backdrop-filter: blur(12px) !important;
-  border-color: rgba(148, 163, 184, 0.4) !important;
+  border-color: rgba(148, 163, 184, 0.45) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
 }
 
-html:not(.dark) .absolute.top-4.left-4 svg.text-blue-400 {
+html:not(.dark) .project-video-badge svg {
   color: #2563eb !important;
 }
 
-html:not(.dark) .absolute.top-4.left-4 .text-white {
+html:not(.dark) .project-video-badge span {
   color: #1e293b !important;
   font-weight: 600 !important;
 }
