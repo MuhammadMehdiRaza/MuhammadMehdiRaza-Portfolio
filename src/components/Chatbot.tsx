@@ -84,6 +84,7 @@ interface Message {
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [chatBottom, setChatBottom] = useState(24);
+  const [isMobile, setIsMobile] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(true);
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -99,6 +100,14 @@ export default function Chatbot() {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+
+  // On mobile, push chatbot up only when footer's scroll-to-top button overlaps it
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 640);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // On mobile, push chatbot up only when footer's scroll-to-top button overlaps it
   useEffect(() => {
@@ -235,12 +244,20 @@ export default function Chatbot() {
       {/* Chatbot Window */}
       <AnimatePresence>
         {isOpen && (
+          <div
+            className="chatbot-window fixed z-50"
+            style={{
+              bottom: `${chatBottom + 70}px`,
+              ...(isMobile
+                ? { left: "2.5vw", right: "2.5vw" }
+                : { right: "24px", width: "420px" })
+            }}
+          >
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="chatbot-window fixed right-6 z-50 w-[95vw] sm:w-[420px] h-[70vh] sm:h-[600px] max-h-[calc(100vh-120px)] bg-slate-900 rounded-2xl shadow-2xl border border-slate-800 flex flex-col overflow-hidden"
-            style={{ bottom: `${chatBottom + 70}px` }}
+            className="w-full h-[70vh] sm:h-[600px] max-h-[calc(100vh-120px)] bg-slate-900 rounded-2xl shadow-2xl border border-slate-800 flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="bg-slate-900 border-b border-slate-800 p-4 flex items-center gap-3">
@@ -364,6 +381,7 @@ export default function Chatbot() {
               </div>
             </div>
           </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </>
