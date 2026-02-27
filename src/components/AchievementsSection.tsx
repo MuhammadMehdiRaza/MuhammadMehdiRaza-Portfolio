@@ -125,7 +125,7 @@ export default function AchievementsSection() {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
                         {DEANS_HONOR_ROLL.map((item, index) => (
                             <motion.div
                                 key={item.id}
@@ -133,45 +133,46 @@ export default function AchievementsSection() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.4, delay: index * 0.08 }}
                                 viewport={{ once: true }}
-                                whileHover={{ y: -6 }}
-                                className="rounded-xl bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 hover:border-blue-600/40 shadow-sm hover:shadow-[0_0_20px_rgba(37,99,235,0.18)] transition-all duration-300 overflow-hidden group flex flex-col cursor-pointer"
+                                whileHover={{ y: -6, scale: 1.02 }}
+                                className="rounded-xl bg-white dark:bg-slate-900/60 dark:backdrop-blur-md border border-slate-200 dark:border-slate-800 hover:border-blue-600/40 shadow-sm dark:shadow-none hover:shadow-[0_0_30px_rgba(37,99,235,0.2)] transition-all duration-300 ease-in-out overflow-hidden group flex flex-col cursor-pointer"
                                 onClick={() => openModal(item)}
                             >
                                 {/* Thumbnail */}
-                                <div className="relative h-28 sm:h-36 w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
+                                <div className="relative h-32 sm:h-40 w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
                                     <Image
                                         src={item.thumbnail}
                                         alt={`Dean's Honor Roll – ${item.semester}`}
                                         fill
                                         loading="lazy"
                                         className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
-                                        sizes="(max-width: 640px) 50vw, 25vw"
+                                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
-
+                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                 </div>
 
                                 {/* Card Content */}
-                                <div className="p-2.5 sm:p-3.5 flex-1 flex flex-col gap-1.5">
-                                    <p className="text-[12px] sm:text-sm font-bold text-slate-900 dark:text-slate-50 group-hover:text-blue-500 transition-colors duration-300 leading-tight">
+                                <div className="p-2 sm:p-4 flex-1 flex flex-col">
+                                    <h4 className="text-[13px] sm:text-sm font-semibold text-slate-900 dark:text-slate-50 line-clamp-2 mb-2 group-hover:text-blue-500 transition-colors duration-200 leading-snug">
                                         {item.semester}
-                                    </p>
-                                    <span className="px-1.5 py-0.5 self-start text-[8px] sm:text-[9px] font-semibold text-blue-600 dark:text-blue-400 bg-blue-500/10 border border-blue-500/30 rounded-full uppercase tracking-wide">
-                                        {item.distinction}
-                                    </span>
+                                    </h4>
 
-                                    <div className="mt-auto pt-1">
-                                        <button
-                                            onClick={(e) => { e.stopPropagation(); openModal(item); }}
-                                            className="w-full inline-flex items-center justify-center gap-1 px-2 py-1.5 text-[9px] sm:text-[10px] font-medium text-slate-800 dark:text-slate-300 bg-slate-100 dark:bg-slate-800/80 hover:bg-blue-600 hover:text-white border border-slate-200 dark:border-slate-700 hover:border-blue-500 rounded-lg transition-all duration-200"
-                                        >
-                                            <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                            </svg>
-                                            <span>View</span>
-                                        </button>
+                                    <div className="flex flex-wrap gap-1 sm:gap-1.5 mb-2 sm:mb-4">
+                                        <span className="px-1.5 sm:px-2 py-0.5 text-[8px] sm:text-[10px] font-medium text-blue-600 dark:text-blue-400 bg-blue-500/10 dark:bg-blue-500/10 border border-blue-500/30 dark:border-blue-500/20 rounded-full uppercase tracking-wide">
+                                            {item.distinction}
+                                        </span>
                                     </div>
+
+                                    <button
+                                        onClick={(e) => { e.stopPropagation(); openModal(item); }}
+                                        className="mt-auto inline-flex items-center justify-center gap-1 sm:gap-2 w-full px-2 py-2 sm:px-4 sm:py-2.5 text-[11px] sm:text-sm font-medium text-slate-800 dark:text-slate-300 bg-slate-100 dark:bg-slate-800/80 hover:bg-blue-600 hover:text-white border border-slate-200 dark:border-slate-700 hover:border-blue-500 rounded-lg transition-all duration-200"
+                                    >
+                                        <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                        </svg>
+                                        <span className="hidden sm:inline">View Certificate</span>
+                                        <span className="sm:hidden">View</span>
+                                    </button>
                                 </div>
                             </motion.div>
                         ))}
