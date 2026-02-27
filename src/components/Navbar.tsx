@@ -86,7 +86,7 @@ export default function Navbar() {
                         MM
                     </div>
                     {/* Name + Title */}
-                    <div className="hidden sm:flex items-center gap-2">
+                    <div className="flex items-center gap-2">
                         <span className="text-base font-bold text-slate-900 dark:text-slate-50 group-hover:text-blue-400 transition-colors duration-200">
                             {PERSONAL_INFO.name}
                         </span>
