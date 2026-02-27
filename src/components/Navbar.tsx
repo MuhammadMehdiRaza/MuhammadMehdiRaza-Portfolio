@@ -90,8 +90,8 @@ export default function Navbar() {
                         <span className="text-sm font-bold text-slate-900 dark:text-slate-50 group-hover:text-blue-400 transition-colors duration-200 truncate">
                             {PERSONAL_INFO.name}
                         </span>
-                        <span className="hidden sm:inline text-slate-300 dark:text-slate-600">|</span>
-                        <span className="hidden sm:inline text-slate-700 dark:text-slate-400 text-sm whitespace-nowrap">
+                        <span className="hidden lg:inline text-slate-300 dark:text-slate-600">|</span>
+                        <span className="hidden lg:inline text-slate-700 dark:text-slate-400 text-sm whitespace-nowrap">
                             Software Engineer
                         </span>
                     </div>
@@ -103,7 +103,7 @@ export default function Navbar() {
                         <a
                             key={link.name}
                             href={link.href}
-                            className={`relative text-sm py-2 transition-colors duration-200 nav-link-underline ${isActive(link.href)
+                            className={`relative text-sm py-2 whitespace-nowrap transition-colors duration-200 nav-link-underline ${isActive(link.href)
                                 ? "text-blue-500 font-medium active"
                                 : "text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-50"
                                 }`}
