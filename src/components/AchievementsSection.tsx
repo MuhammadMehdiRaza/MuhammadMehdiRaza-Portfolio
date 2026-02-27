@@ -159,9 +159,6 @@ export default function AchievementsSection() {
                                     <span className="px-1.5 py-0.5 self-start text-[8px] sm:text-[9px] font-semibold text-blue-600 dark:text-blue-400 bg-blue-500/10 border border-blue-500/30 rounded-full uppercase tracking-wide">
                                         {item.distinction}
                                     </span>
-                                    <p className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-500 leading-tight">
-                                        {item.dean}
-                                    </p>
 
                                     <div className="mt-auto pt-1">
                                         <button
