@@ -201,14 +201,14 @@ html:not(.dark) .text-slate-800 {
 /* ========== BUTTONS - SECONDARY ========== */
 /* "Get in Touch" and similar outline buttons */
 html:not(.dark) section a[href="#contact"],
-html:not(.dark) button[class*="border"][class*="text-slate"] {
+html:not(.dark) button[class*="border"][class*="text-slate"]:not([class*="bg-slate-100"]) {
   background-color: #ffffff !important;
   color: #0f172a !important;
   border-color: #cbd5e1 !important;
 }
 
 html:not(.dark) section a[href="#contact"]:hover,
-html:not(.dark) button[class*="border"][class*="text-slate"]:hover {
+html:not(.dark) button[class*="border"][class*="text-slate"]:not([class*="bg-slate-100"]):hover {
   background-color: #f8fafc !important;
   border-color: #2563eb !important;
   color: #2563eb !important;
