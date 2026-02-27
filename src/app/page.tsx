@@ -17,6 +17,9 @@ const ProjectCard = dynamic(() => import("@/components/ProjectCard"), {
 const CertificationSection = dynamic(() => import("@/components/CertificationSection"), {
   ssr: false,
 });
+const AchievementsSection = dynamic(() => import("@/components/AchievementsSection"), {
+  ssr: false,
+});
 const Contact = dynamic(() => import("@/components/Contact"), { ssr: false });
 const Chatbot = dynamic(() => import("@/components/Chatbot"), { ssr: false });
 
@@ -214,11 +217,32 @@ export default function Home() {
               Credentials
             </h2>
             <p className="text-base text-slate-700 dark:text-slate-400 mb-12 max-w-2xl">
-              Professional certifications and hackathon achievements in AI, algorithms, and software design.
+              Professional certifications in AI, algorithms, and software design.
             </p>
           </motion.div>
 
           <CertificationSection />
+        </div>
+      </section>
+
+      {/* ========== ACHIEVEMENTS SECTION ========== */}
+      <section id="achievements" className="py-24 bg-white dark:bg-slate-950">
+        <div className="section-container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-section text-slate-900 dark:text-slate-50 mb-2">
+              Achievements
+            </h2>
+            <p className="text-base text-slate-700 dark:text-slate-400 mb-12 max-w-2xl">
+              Academic honors and competition wins across semesters at GIKI.
+            </p>
+          </motion.div>
+
+          <AchievementsSection />
         </div>
       </section>
 

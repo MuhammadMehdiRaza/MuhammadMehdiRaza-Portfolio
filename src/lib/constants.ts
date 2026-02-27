@@ -237,6 +237,42 @@ export const HACKATHON_ACHIEVEMENTS = [
   { name: "Microsoft UI/UX Winner", event: "GIKI", year: "2024" },
 ];
 
+// ========== DEAN'S HONOR ROLL ==========
+export const DEANS_HONOR_ROLL = [
+  {
+    id: 1,
+    semester: "Fall 2023",
+    distinction: "Academic High Distinction",
+    pdfPath: "/certificates/deans-honor-sem1.pdf",
+    thumbnail: "/certificates/deans-honor-sem1.webp",
+    dean: "Prof. Dr. Zahid Halim",
+  },
+  {
+    id: 2,
+    semester: "Spring 2024",
+    distinction: "Academic Distinction",
+    pdfPath: "/certificates/deans-honor-sem2.pdf",
+    thumbnail: "/certificates/deans-honor-sem2.webp",
+    dean: "Prof. Dr. Qadeer Ul Hasan",
+  },
+  {
+    id: 3,
+    semester: "Fall 2024",
+    distinction: "Academic Distinction",
+    pdfPath: "/certificates/deans-honor-sem3.pdf",
+    thumbnail: "/certificates/deans-honor-sem3.webp",
+    dean: "Prof. Dr. Qadeer Ul Hasan",
+  },
+  {
+    id: 4,
+    semester: "Spring 2025",
+    distinction: "Academic High Distinction",
+    pdfPath: "/certificates/deans-honor-sem4.pdf",
+    thumbnail: "/certificates/deans-honor-sem4.webp",
+    dean: "Prof. Dr. Qadeer Ul Hasan",
+  },
+];
+
 // ========== TECH STACK DATA ==========
 export const TECH_STACK = {
   frontend: [
@@ -298,6 +334,7 @@ export const NAV_LINKS = [
   { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
   { name: "Credentials", href: "#credentials" },
+  { name: "Achievements", href: "#achievements" },
   { name: "Tech Stack", href: "#techstack" },
   { name: "Contact", href: "#contact" },
 ];
@@ -307,6 +344,7 @@ export const FOOTER_NAV_LINKS = [
   { name: "Home", href: "#home" },
   { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
+  { name: "Achievements", href: "#achievements" },
   { name: "Contact", href: "#contact" },
 ];
 

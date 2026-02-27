@@ -194,7 +194,7 @@ export default function ResearchCredentialsGallery() {
                 </div>
 
                 {/* 3-Card Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
                     {RESEARCH_CERTIFICATES.map((cert, index) => (
                         <motion.div
                             key={cert.id}
@@ -206,42 +206,43 @@ export default function ResearchCredentialsGallery() {
                             className="rounded-xl bg-white dark:bg-slate-900/50 dark:backdrop-blur-md border border-slate-200 dark:border-slate-800 hover:border-blue-600/40 shadow-sm dark:shadow-none hover:shadow-[0_0_25px_rgba(37,99,235,0.2)] transition-all duration-300 ease-in-out overflow-hidden group flex flex-col"
                         >
                             {/* Thumbnail */}
-                            <div className="relative h-28 w-full overflow-hidden bg-slate-200 dark:bg-slate-800">
+                            <div className="relative h-20 sm:h-28 w-full overflow-hidden bg-slate-200 dark:bg-slate-800">
                                 <Image
                                     src={cert.thumbnail}
                                     alt={cert.title}
                                     fill
                                     loading="lazy"
                                     className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
-                                    sizes="(max-width: 640px) 100vw, 33vw"
+                                    sizes="(max-width: 640px) 50vw, 33vw"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-100/80 dark:from-slate-900/80 to-transparent" />
-                                <div className="absolute top-2 right-2 px-2 py-0.5 bg-blue-600/90 backdrop-blur-sm rounded text-[9px] font-semibold text-white uppercase tracking-wider">
+                                <div className="absolute top-1.5 right-1.5 sm:top-2 sm:right-2 px-1.5 sm:px-2 py-0.5 bg-blue-600/90 backdrop-blur-sm rounded text-[8px] sm:text-[9px] font-semibold text-white uppercase tracking-wider">
                                     {cert.organization}
                                 </div>
                             </div>
 
                             {/* Card Content */}
-                            <div className="p-4 flex-1 flex flex-col">
-                                <h5 className="text-sm font-bold text-blue-600 dark:text-blue-400 line-clamp-2 mb-1">
+                            <div className="p-2.5 sm:p-4 flex-1 flex flex-col">
+                                <h5 className="text-[11px] sm:text-sm font-bold text-blue-600 dark:text-blue-400 line-clamp-2 mb-1">
                                     {cert.title}
                                 </h5>
-                                <p className="text-xs text-text-secondary mb-2">
+                                <p className="text-[10px] sm:text-xs text-text-secondary mb-1 sm:mb-2">
                                     {cert.subtitle}
                                 </p>
-                                <p className="text-[11px] text-text-secondary/70 leading-relaxed mb-3 line-clamp-2">
+                                <p className="text-[9px] sm:text-[11px] text-text-secondary/70 leading-relaxed mb-2 sm:mb-3 line-clamp-2">
                                     {cert.impact}
                                 </p>
 
                                 <button
                                     onClick={() => openModal(cert)}
-                                    className="mt-auto inline-flex items-center justify-center gap-2 w-full px-3 py-2.5 text-xs font-medium text-slate-800 dark:text-slate-300 bg-slate-100 dark:bg-slate-800/80 hover:bg-blue-600 hover:text-white border border-slate-200 dark:border-slate-700 hover:border-blue-500 rounded-lg transition-all duration-200"
+                                    className="mt-auto inline-flex items-center justify-center gap-1 sm:gap-2 w-full px-2 sm:px-3 py-1.5 sm:py-2.5 text-[10px] sm:text-xs font-medium text-slate-800 dark:text-slate-300 bg-slate-100 dark:bg-slate-800/80 hover:bg-blue-600 hover:text-white border border-slate-200 dark:border-slate-700 hover:border-blue-500 rounded-lg transition-all duration-200"
                                 >
-                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                                     </svg>
-                                    View Certificate
+                                    <span className="hidden sm:inline">View Certificate</span>
+                                    <span className="sm:hidden">View</span>
                                 </button>
                             </div>
                         </motion.div>
