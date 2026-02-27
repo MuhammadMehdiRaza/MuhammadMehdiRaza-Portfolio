@@ -79,19 +79,19 @@ export default function Navbar() {
                 <a
                     href="#"
                     onClick={() => setActiveSection("")}
-                    className="flex items-center gap-3 group"
+                    className="flex items-center gap-3 group min-w-0"
                 >
                     {/* MM Badge */}
                     <div className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold text-xs shrink-0 group-hover:shadow-[0_0_15px_rgba(37,99,235,0.4)] transition-shadow duration-200">
                         MM
                     </div>
                     {/* Name + Title */}
-                    <div className="flex items-center gap-2">
-                        <span className="text-base font-bold text-slate-900 dark:text-slate-50 group-hover:text-blue-400 transition-colors duration-200">
+                    <div className="flex items-center gap-2 min-w-0">
+                        <span className="text-sm font-bold text-slate-900 dark:text-slate-50 group-hover:text-blue-400 transition-colors duration-200 truncate">
                             {PERSONAL_INFO.name}
                         </span>
-                        <span className="text-slate-300 dark:text-slate-700">|</span>
-                        <span className="text-slate-700 dark:text-slate-400 text-sm">
+                        <span className="hidden sm:inline text-slate-300 dark:text-slate-600">|</span>
+                        <span className="hidden sm:inline text-slate-700 dark:text-slate-400 text-sm whitespace-nowrap">
                             Software Engineer
                         </span>
                     </div>
