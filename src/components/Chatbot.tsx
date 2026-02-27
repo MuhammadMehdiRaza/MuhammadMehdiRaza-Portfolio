@@ -83,6 +83,7 @@ interface Message {
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
+  const [chatBottom, setChatBottom] = useState(24);
   const [showSuggestions, setShowSuggestions] = useState(true);
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -98,6 +99,28 @@ export default function Chatbot() {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+
+  // On mobile, push chatbot up only when footer's scroll-to-top button overlaps it
+  useEffect(() => {
+    const handleFooterOverlap = () => {
+      if (window.innerWidth >= 640) {
+        setChatBottom(24);
+        return;
+      }
+      const footer = document.querySelector('footer');
+      if (!footer) return;
+      const footerTop = footer.getBoundingClientRect().top;
+      const viewportHeight = window.innerHeight;
+
+      // footer py-8 = 32px padding before the scroll-to-top button
+      // push chatbot just above that button with a 12px gap
+      const neededBottom = (viewportHeight - footerTop) - 32 + 12;
+      setChatBottom(neededBottom > 24 ? neededBottom : 24);
+    };
+    window.addEventListener('scroll', handleFooterOverlap, { passive: true });
+    handleFooterOverlap();
+    return () => window.removeEventListener('scroll', handleFooterOverlap);
+  }, []);
 
   useEffect(() => {
     scrollToBottom();
@@ -193,7 +216,8 @@ export default function Chatbot() {
       {!isOpen && (
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
-          className="fixed bottom-6 right-6 z-50 w-14 h-14 sm:w-16 sm:h-16 bg-black rounded-full shadow-2xl flex items-center justify-center text-white hover:shadow-blue-500/20 hover:shadow-2xl transition-all duration-200"
+          className="fixed right-6 z-50 w-14 h-14 sm:w-16 sm:h-16 bg-black rounded-full shadow-2xl flex items-center justify-center text-white hover:shadow-blue-500/20 hover:shadow-2xl transition-all duration-200"
+          style={{ bottom: `${chatBottom}px` }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -215,7 +239,8 @@ export default function Chatbot() {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed bottom-24 right-6 z-50 w-[95vw] sm:w-[420px] h-[70vh] sm:h-[600px] max-h-[calc(100vh-120px)] bg-slate-900 rounded-2xl shadow-2xl border border-slate-800 flex flex-col overflow-hidden"
+            className="fixed right-6 z-50 w-[95vw] sm:w-[420px] h-[70vh] sm:h-[600px] max-h-[calc(100vh-120px)] bg-slate-900 rounded-2xl shadow-2xl border border-slate-800 flex flex-col overflow-hidden"
+            style={{ bottom: `${chatBottom + 70}px` }}
           >
             {/* Header */}
             <div className="bg-slate-900 border-b border-slate-800 p-4 flex items-center gap-3">
