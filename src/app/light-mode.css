@@ -455,14 +455,14 @@ html:not(.dark) .project-video-badge span {
    ======================================== */
 
 /* Chatbot container - light theme */
-html:not(.dark) .chatbot-window {
+html:not(.dark) .chatbot-window > div {
   background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%) !important;
   border: 2px solid #cbd5e1 !important;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05) !important;
 }
 
 /* Chatbot header */
-html:not(.dark) .chatbot-window > div:first-child {
+html:not(.dark) .chatbot-window > div > div:first-child {
   background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
