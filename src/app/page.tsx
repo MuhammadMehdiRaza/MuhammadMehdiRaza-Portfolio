@@ -3,9 +3,10 @@
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
+import AboutSection from "@/components/AboutSection";
 import TechStack from "@/components/TechStack";
 import Footer from "@/components/Footer";
-import { PERSONAL_INFO, EXPERIENCES, PROJECTS } from "@/lib/constants";
+import { PERSONAL_INFO, EXPERIENCES, PROJECTS, PUBLICATION } from "@/lib/constants";
 
 // Dynamic imports for performance (code splitting)
 const ExperienceCard = dynamic(() => import("@/components/ExperienceCard"), {
@@ -104,6 +105,27 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ========== ABOUT SECTION ========== */}
+      <section id="about" className="py-24 bg-white dark:bg-slate-950">
+        <div className="section-container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-section text-slate-900 dark:text-slate-50 mb-2">
+              About Me
+            </h2>
+            <p className="text-base text-slate-700 dark:text-slate-400 mb-12 max-w-2xl">
+              A little about who I am, and what I love to build.
+            </p>
+          </motion.div>
+
+          <AboutSection />
+        </div>
+      </section>
+
       {/* ========== EXPERIENCE SECTION ========== */}
       <section id="experience" className="py-24 bg-white dark:bg-slate-900/30">
         <div className="section-container">
@@ -135,6 +157,93 @@ export default function Home() {
               />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ========== PUBLICATION SECTION ========== */}
+      <section id="publication" className="py-24 bg-white dark:bg-slate-950">
+        <div className="section-container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-section text-slate-900 dark:text-slate-50 mb-2">
+              Publication
+            </h2>
+            <p className="text-base text-slate-700 dark:text-slate-400 mb-12 max-w-2xl">
+              Peer-reviewed research, published and independently verifiable.
+            </p>
+          </motion.div>
+
+          <motion.a
+            href={PUBLICATION.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+            whileHover={{ y: -4 }}
+            className="group block rounded-2xl bg-white dark:bg-slate-900/50 dark:backdrop-blur-md border border-slate-200 dark:border-slate-800 hover:border-blue-600/40 shadow-sm dark:shadow-none hover:shadow-[0_0_30px_rgba(37,99,235,0.15)] transition-all duration-300 ease-in-out"
+          >
+            <div className="p-6 sm:p-8 flex flex-col sm:flex-row gap-5 sm:gap-6">
+              {/* Icon */}
+              <div className="shrink-0">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-blue-600/10 border border-blue-500/30 flex items-center justify-center group-hover:bg-blue-600 group-hover:shadow-[0_0_20px_rgba(37,99,235,0.3)] transition-all duration-300">
+                  <svg className="w-6 h-6 sm:w-7 sm:h-7 text-blue-500 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-wrap items-center gap-2 mb-3">
+                  <span className="px-2.5 py-0.5 text-[10px] sm:text-xs font-semibold text-blue-600 dark:text-blue-400 bg-blue-500/10 border border-blue-500/30 rounded-full uppercase tracking-wide">
+                    {PUBLICATION.publisher}
+                  </span>
+                  <span className="px-2.5 py-0.5 text-[10px] sm:text-xs font-medium text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/50 rounded-full">
+                    {PUBLICATION.type}
+                  </span>
+                  <span className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-500">
+                    {PUBLICATION.date}
+                  </span>
+                </div>
+
+                <h3 className="text-lg sm:text-xl font-semibold text-slate-900 dark:text-slate-50 leading-snug mb-2 group-hover:text-blue-500 transition-colors duration-200">
+                  {PUBLICATION.title}
+                </h3>
+
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-3">
+                  {PUBLICATION.venue} · {PUBLICATION.host}
+                </p>
+
+                <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
+                  {PUBLICATION.summary}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {PUBLICATION.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2.5 py-0.5 text-[10px] sm:text-xs font-medium text-slate-700 dark:text-slate-400 bg-slate-100 dark:bg-slate-800/50 rounded-full border border-slate-200 dark:border-slate-700/50"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <span className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 dark:text-blue-400">
+                  View on IEEE Xplore
+                  <svg className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </motion.a>
         </div>
       </section>
 

@@ -15,6 +15,38 @@ export const PERSONAL_INFO = {
 // ========== RESUME LINK ==========
 export const RESUME_LINK = "/certificates/Mehdi_Cv.pdf";
 
+// ========== ABOUT ME ==========
+export const ABOUT_ME = {
+  photo: "/mehdi-raza.webp",
+  photoAlt: "Muhammad Mehdi Raza",
+  paragraphs: [
+    "I'm a final-year software engineering student at GIKI, and most of what I do sits in the gap between AI research and shipping real software. I've worked across machine learning, large language models, and computer vision, and right now I'm especially drawn to agentic AI and cloud DevOps.",
+    "It started at the SDAIA-KFUPM Joint Research Center for AI, where I completed a research internship on Arabic entity sentiment classification with lightweight LLMs, work that led to a conference paper in IEEE Xplore. At SAWiE, I built a YOLOv8n model to detect good and bad seeds, where the real goal was generalizing across different cameras and lighting. Using augmentation such as rotation, HSV color jitter, and mosaic to keep it robust across setups, it reached about 99% mAP50 and roughly 80% mAP50-95. More recently, at TEKVAL, I worked as an AI engineer intern building RAG pipelines and agent workflows, which is where my interest in agentic AI really took hold.",
+    "These days I'm going deeper into agentic AI and cloud DevOps, and I'm open to any opportunity where I can keep building in these areas, or where my earlier work in machine learning and applied AI is a good fit.",
+  ],
+  stats: [
+    { value: "3.71", label: "CGPA / 4.0" },
+    { value: "6×", label: "Dean's Honor List" },
+    { value: "3", label: "Internships" },
+    { value: "8+", label: "Certifications" },
+  ],
+  availability: "Open to opportunities",
+};
+
+// ========== PUBLICATION ==========
+export const PUBLICATION = {
+  title: "Entity Sentiment Classification using Arabic Lightweight LLMs",
+  type: "Conference Paper",
+  venue: "2025 International Conference on Engineering and Computing Technologies (EngiTek'25)",
+  host: "Jordan University of Science and Technology (JUST)",
+  publisher: "IEEE Xplore",
+  date: "December 2025",
+  url: "https://ieeexplore.ieee.org/document/11567535",
+  summary:
+    "An optimized framework for Arabic entity-level sentiment classification using lightweight large language models, balancing accuracy with computational efficiency. Developed during my research at the SDAIA-KFUPM Joint Research Center for AI.",
+  tags: ["Arabic NLP", "Lightweight LLMs", "Sentiment Analysis", "DSPy"],
+};
+
 // ========== KFUPM RESEARCH CERTIFICATE PATHS ==========
 export const RESEARCH_CERTIFICATES = [
   {
@@ -45,6 +77,7 @@ export const RESEARCH_CERTIFICATES = [
 
 // ========== PROJECT THUMBNAILS ==========
 export const PROJECT_THUMBNAILS = {
+  ecommerce: "/projects/ecommerce.png",
   streamify: "/projects/streamify.png",
   crowdserve: "/projects/crowdserve.png",
   sehatsathi: "/projects/sehatsathi.png",
@@ -54,6 +87,7 @@ export const PROJECT_THUMBNAILS = {
 
 // ========== PROJECT VIDEOS ==========
 export const PROJECT_VIDEOS = {
+  ecommerce: "/projects/ecommerce-demo.mp4",
   streamify: "/projects/streamify-demo.mp4",
   crowdserve: "/projects/crowdserve-demo.mp4",
   digitRecognition: "/projects/digit-recognition-demo.mp4",
@@ -112,6 +146,16 @@ export const EXPERIENCES = [
 
 // ========== PROJECTS DATA ==========
 export const PROJECTS = [
+  {
+    id: 6,
+    title: "Cloud-Native E-Commerce Platform",
+    description: "Deployed a 12-microservice e-commerce app on a 30-node Amazon EKS cluster, provisioned via eksctl & CloudFormation with EBS CSI storage, ECR, and a Network Load Balancer for scalable orchestration.",
+    tech: ["AWS EKS", "Kubernetes", "Docker", "Helm"],
+    thumbnailKey: "ecommerce" as const,
+    githubKey: undefined,
+    featured: true,
+    hasVideo: true,
+  },
   {
     id: 1,
     title: "Streamify",
@@ -232,9 +276,56 @@ export const COURSERA_CERTIFICATIONS = [
   },
 ];
 
-export const HACKATHON_ACHIEVEMENTS = [
-  { name: "Google Quantumnia Hackathon Winner", event: "GIKI", year: "2024" },
-  { name: "Microsoft UI/UX Winner", event: "GIKI", year: "2024" },
+// ========== HACKATHON CERTIFICATES (individually viewable) ==========
+export const HACKATHON_CERTIFICATES = [
+  {
+    id: 1,
+    title: "Micathon '26: 3rd Place",
+    event: "Microsoft Club GIKI",
+    year: "2026",
+    result: "3rd Place",
+    thumbnail: "/certificates/hackathon-micathon26.png",
+  },
+  {
+    id: 2,
+    title: "Micathon '25: Best UI/UX Design",
+    event: "Microsoft Club GIKI",
+    year: "2025",
+    result: "Best UI/UX",
+    thumbnail: "/certificates/hackathon-micathon25-uiux.png",
+  },
+  {
+    id: 3,
+    title: "AI Quantum Leap '25: Quantumania Winner",
+    event: "GDGoC GIKI",
+    year: "2025",
+    result: "1st Prize",
+    thumbnail: "/certificates/hackathon-quantumleap-win.png",
+  },
+  {
+    id: 4,
+    title: "Micathon '25: Participation",
+    event: "Microsoft Club GIKI",
+    year: "2025",
+    result: "Participant",
+    thumbnail: "/certificates/hackathon-micathon25.png",
+  },
+  {
+    id: 5,
+    title: "AI Quantum Leap '25: Participation",
+    event: "GDGoC GIKI",
+    year: "2025",
+    result: "Participant",
+    thumbnail: "/certificates/hackathon-quantumleap.png",
+  },
+  {
+    id: 6,
+    title: "IdeaSprint '24: Participation",
+    event: "GDG on Campus GIKI",
+    year: "2024",
+    result: "Participant",
+    thumbnail: "/certificates/hackathon-ideasprint.png",
+  },
 ];
 
 // ========== DEAN'S HONOR ROLL ==========
@@ -269,6 +360,14 @@ export const DEANS_HONOR_ROLL = [
     distinction: "Academic High Distinction",
     pdfPath: "/certificates/deans-honor-sem4.pdf",
     thumbnail: "/certificates/deans-honor-sem4.webp",
+    dean: "Prof. Dr. Qadeer Ul Hasan",
+  },
+  {
+    id: 5,
+    semester: "Fall 2025",
+    distinction: "Academic Distinction",
+    pdfPath: "/certificates/deans-honor-sem5.pdf",
+    thumbnail: "/certificates/deans-honor-sem5.webp",
     dean: "Prof. Dr. Qadeer Ul Hasan",
   },
 ];
@@ -331,7 +430,9 @@ export const TECH_STACK = {
 
 // ========== NAVIGATION LINKS ==========
 export const NAV_LINKS = [
+  { name: "About", href: "#about" },
   { name: "Experience", href: "#experience" },
+  { name: "Publication", href: "#publication" },
   { name: "Projects", href: "#projects" },
   { name: "Credentials", href: "#credentials" },
   { name: "Achievements", href: "#achievements" },
@@ -342,6 +443,7 @@ export const NAV_LINKS = [
 // ========== FOOTER NAVIGATION LINKS ==========
 export const FOOTER_NAV_LINKS = [
   { name: "Home", href: "#home" },
+  { name: "About", href: "#about" },
   { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
   { name: "Achievements", href: "#achievements" },

@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Drive Tailwind's dark: variant from the `.dark` class (toggled by next-themes),
+   not the OS prefers-color-scheme. Without this, Tailwind v4 defaults dark: to a
+   media query, so the theme toggle can't control dark: utilities. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ========== DESIGN SYSTEM VARIABLES ========== */
 :root {
   /* Light Mode Colors - Clean & Minimal */

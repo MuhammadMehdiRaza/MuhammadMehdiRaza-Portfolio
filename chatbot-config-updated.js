@@ -26,12 +26,12 @@ const chatbotSuggestions = [
 const chatbotResponses = {
   intro: {
     patterns: ["who are you", "introduce yourself", "tell me about yourself", "about you", "introduction"],
-    response: "Hi! I'm Muhammad Mehdi Raza, a **Software Engineering student** at GIKI with a **3.69 GPA**. I'm an AI Researcher and Full-Stack Developer passionate about LLM optimization and building scalable web systems like CrowdServe and SehatSathi.\n\nCurrently, I am actively seeking **Internships or Full-time roles** (Onsite in Saudi Arabia or Pakistan, as well as Remote anywhere) to apply my expertise in Web and AI! 🚀"
+    response: "Hi! I'm Muhammad Mehdi Raza, a **Software Engineering student** at GIKI with a **3.71 GPA**. I'm an AI Researcher and Full-Stack Developer passionate about LLM optimization and building scalable web systems like CrowdServe and SehatSathi.\n\nCurrently, I am actively seeking **Internships or Full-time roles** (Onsite in Saudi Arabia or Pakistan, as well as Remote anywhere) to apply my expertise in Web and AI! 🚀"
   },
   
   education: {
     patterns: ["education", "study", "university", "degree", "gpa", "academic", "giki", "school"],
-    response: "I am a **3rd-year Software Engineering student** at GIKI, maintaining a **3.69 GPA**.\n\nI graduated my matriculation and intermediate from **PISK (Pakistan International School Al Khobar)**. In matric I achieved **99%** and secured **2nd position** in the entire school, and in intermediate I got **85%** with **3rd position** (FBISE Board).\n\nI have recently completed an **8-week internship at KFUPM** where I worked on LLM optimization and AI research.\n\nI am immediately open to internship or full-time opportunities where I can contribute to the growing AI ecosystem! 🎯"
+    response: "I am a **4th-year Software Engineering student** at GIKI, maintaining a **3.71 GPA**.\n\nI graduated my matriculation and intermediate from **PISK (Pakistan International School Al Khobar)**. In matric I achieved **99%** and secured **2nd position** in the entire school, and in intermediate I got **85%** with **3rd position** (FBISE Board).\n\nI have recently completed an **8-week internship at KFUPM** where I worked on LLM optimization and AI research.\n\nI am immediately open to internship or full-time opportunities where I can contribute to the growing AI ecosystem! 🎯"
   },
   
   experience: {

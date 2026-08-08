@@ -74,7 +74,7 @@ export default function Navbar() {
                 isScrolled ? "glass-nav py-3 border-b" : "bg-transparent py-5 border-b border-transparent"
                 }`}
         >
-            <div className="section-container flex items-center justify-between">
+            <div className="w-full max-w-[1440px] mx-auto px-6 md:px-8 flex items-center justify-between">
                 {/* Logo - MM Badge + Full Name + Title */}
                 <a
                     href="#"
@@ -90,15 +90,15 @@ export default function Navbar() {
                         <span className="text-sm font-bold text-slate-900 dark:text-slate-50 group-hover:text-blue-400 transition-colors duration-200 truncate">
                             {PERSONAL_INFO.name}
                         </span>
-                        <span className="hidden lg:inline text-slate-300 dark:text-slate-600">|</span>
-                        <span className="hidden lg:inline text-slate-700 dark:text-slate-400 text-sm whitespace-nowrap">
+                        <span className="hidden 2xl:inline text-slate-300 dark:text-slate-600">|</span>
+                        <span className="hidden 2xl:inline text-slate-700 dark:text-slate-400 text-sm whitespace-nowrap">
                             Software Engineer
                         </span>
                     </div>
                 </a>
 
                 {/* Desktop Navigation */}
-                <div className="hidden md:flex items-center gap-5">
+                <div className="hidden xl:flex items-center gap-6">
                     {NAV_LINKS.map((link) => (
                         <a
                             key={link.name}
@@ -125,7 +125,7 @@ export default function Navbar() {
                 {/* Mobile Menu Button */}
                 <button
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    className="md:hidden p-2 text-slate-400 hover:text-slate-50 transition-colors duration-200"
+                    className="xl:hidden p-2 text-slate-400 hover:text-slate-50 transition-colors duration-200"
                     aria-label="Toggle menu"
                 >
                     <svg
@@ -161,7 +161,7 @@ export default function Navbar() {
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.2 }}
-                        className="md:hidden glass-nav mt-2 mx-4 rounded-xl overflow-hidden"
+                        className="xl:hidden glass-nav mt-2 mx-4 rounded-xl overflow-hidden"
                     >
                         <div className="flex flex-col p-4 gap-2">
                             {NAV_LINKS.map((link) => (

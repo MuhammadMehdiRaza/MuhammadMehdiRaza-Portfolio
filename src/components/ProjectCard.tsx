@@ -10,7 +10,7 @@ interface ProjectCardProps {
     description: string;
     tech: string[];
     thumbnailKey: keyof typeof PROJECT_THUMBNAILS;
-    githubKey: keyof typeof GITHUB_LINKS;
+    githubKey?: keyof typeof GITHUB_LINKS;
     featured?: boolean;
     index: number;
     hasVideo?: boolean;
@@ -31,7 +31,7 @@ export default function ProjectCard({
     const cardRef = useRef<HTMLDivElement>(null);
 
     const thumbnail = PROJECT_THUMBNAILS[thumbnailKey];
-    const githubLink = GITHUB_LINKS[githubKey];
+    const githubLink = githubKey ? GITHUB_LINKS[githubKey] : null;
     const videoSrc = hasVideo ? PROJECT_VIDEOS[thumbnailKey as keyof typeof PROJECT_VIDEOS] : null;
 
     // Use IntersectionObserver to lazy load video
@@ -54,9 +54,7 @@ export default function ProjectCard({
     }, []);
 
     const handleCardClick = () => {
-        if (hasVideo && videoSrc) {
-            setIsModalOpen(true);
-        }
+        setIsModalOpen(true);
     };
 
     const handleCloseModal = () => {
@@ -73,8 +71,7 @@ export default function ProjectCard({
                 viewport={{ once: true }}
                 whileHover={{ y: -8 }}
                 onClick={handleCardClick}
-                className={`group relative overflow-hidden rounded-xl bg-white dark:bg-slate-900/50 dark:backdrop-blur-md border border-slate-200 dark:border-slate-800 hover:border-blue-600/40 shadow-sm dark:shadow-none hover:shadow-[0_0_20px_rgba(37,99,235,0.2)] transition-all duration-300 ease-in-out ${hasVideo ? "cursor-default" : ""
-                    }`}
+                className="group relative overflow-hidden rounded-xl bg-white dark:bg-slate-900/50 dark:backdrop-blur-md border border-slate-200 dark:border-slate-800 hover:border-blue-600/40 shadow-sm dark:shadow-none hover:shadow-[0_0_20px_rgba(37,99,235,0.2)] transition-all duration-300 ease-in-out cursor-pointer"
             >
                 {/* ========== Video/Image Container - aspect-video to prevent layout shift ========== */}
                 <div className="relative w-full aspect-[4/3] sm:aspect-video overflow-hidden rounded-t-xl bg-slate-100 dark:bg-slate-800">
@@ -111,18 +108,20 @@ export default function ProjectCard({
 
                     {/* Action Buttons - Bottom Right */}
                     <div className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 flex items-center gap-1.5 sm:gap-3 z-30">
-                        <a
-                            href={githubLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-slate-900/95 backdrop-blur-sm flex items-center justify-center text-white hover:bg-slate-800 transition-all duration-200 border border-slate-700 shadow-lg"
-                            aria-label="View on GitHub"
-                        >
-                            <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                            </svg>
-                        </a>
+                        {githubLink && (
+                            <a
+                                href={githubLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={(e) => e.stopPropagation()}
+                                className="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-slate-900/95 backdrop-blur-sm flex items-center justify-center text-white hover:bg-slate-800 transition-all duration-200 border border-slate-700 shadow-lg"
+                                aria-label="View on GitHub"
+                            >
+                                <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                </svg>
+                            </a>
+                        )}
                         {hasVideo && videoSrc && (
                             <button
                                 onClick={handleCardClick}
@@ -165,9 +164,9 @@ export default function ProjectCard({
                 </div>
             </motion.div>
 
-            {/* ========== VIDEO MODAL POPUP ========== */}
+            {/* ========== PROJECT DETAIL MODAL ========== */}
             <AnimatePresence>
-                {isModalOpen && videoSrc && (
+                {isModalOpen && (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -180,66 +179,73 @@ export default function ProjectCard({
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.9, opacity: 0 }}
                             transition={{ duration: 0.2 }}
-                            className="relative w-full max-w-4xl bg-slate-900 rounded-2xl overflow-hidden shadow-2xl"
+                            className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-2xl"
                             onClick={(e) => e.stopPropagation()}
                         >
                             {/* Modal Header */}
-                            <div className="flex items-center justify-between p-4 border-b border-slate-800">
-                                <h3 className="text-lg font-semibold text-slate-50">{title}</h3>
+                            <div className="flex items-center justify-between p-4 sm:p-5 border-b border-slate-200 dark:border-slate-800">
+                                <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-50">{title}</h3>
                                 <button
                                     onClick={handleCloseModal}
-                                    className="w-10 h-10 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-400 hover:text-slate-50 transition-colors duration-200"
+                                    className="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-50 transition-colors duration-200 shrink-0"
                                     aria-label="Close modal"
                                 >
-                                    <svg
-                                        className="w-5 h-5"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth={2}
-                                            d="M6 18L18 6M6 6l12 12"
-                                        />
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                                     </svg>
                                 </button>
                             </div>
 
-                            {/* Video Player - Full controls */}
-                            <div className="relative w-full aspect-video bg-black flex items-center justify-center">
-                                {/* Loader inside modal */}
-                                <div className="absolute inset-0 flex items-center justify-center bg-slate-900/50">
-                                    <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
-                                </div>
-                                <video
-                                    src={videoSrc}
-                                    controls
-                                    autoPlay
-                                    className="relative w-full h-full object-contain z-10"
-                                >
-                                    Your browser does not support the video tag.
-                                </video>
-                            </div>
-
-                            {/* Modal Footer */}
-                            <div className="p-4 border-t border-slate-800">
-                                <a
-                                    href={githubLink}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-blue-400 bg-blue-600/10 hover:bg-blue-600/20 rounded-lg transition-colors duration-200"
-                                >
-                                    <svg
-                                        className="w-4 h-4"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
+                            {/* Video Player (only when the project has a demo) */}
+                            {videoSrc && (
+                                <div className="relative w-full aspect-video bg-black flex items-center justify-center">
+                                    {!videoLoaded && (
+                                        <div className="absolute inset-0 flex items-center justify-center bg-black/70 z-0">
+                                            <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
+                                        </div>
+                                    )}
+                                    <video
+                                        src={videoSrc}
+                                        controls
+                                        autoPlay
+                                        onLoadedData={() => setVideoLoaded(true)}
+                                        className="relative w-full h-full object-contain z-10"
                                     >
-                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                                    </svg>
-                                    View on GitHub
-                                </a>
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            )}
+
+                            {/* Description + tech + github */}
+                            <div className="p-4 sm:p-6 space-y-4">
+                                <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+                                    {description}
+                                </p>
+
+                                <div className="flex flex-wrap gap-2">
+                                    {tech.map((item) => (
+                                        <span
+                                            key={item}
+                                            className="px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-400 bg-slate-100 dark:bg-slate-800/50 rounded-full border border-slate-200 dark:border-slate-700/50"
+                                        >
+                                            {item}
+                                        </span>
+                                    ))}
+                                </div>
+
+                                {githubLink && (
+                                    <a
+                                        href={githubLink}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-600/10 hover:bg-blue-600/20 rounded-lg transition-colors duration-200"
+                                    >
+                                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                        </svg>
+                                        View on GitHub
+                                    </a>
+                                )}
                             </div>
                         </motion.div>
                     </motion.div>
