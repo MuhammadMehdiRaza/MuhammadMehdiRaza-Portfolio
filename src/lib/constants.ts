@@ -90,6 +90,7 @@ export const PROJECT_VIDEOS = {
   ecommerce: "/projects/ecommerce-demo.mp4",
   streamify: "/projects/streamify-demo.mp4",
   crowdserve: "/projects/crowdserve-demo.mp4",
+  sehatsathi: "/projects/sehatsathi-demo.mp4",
   digitRecognition: "/projects/digit-recognition-demo.mp4",
   quizApp: "/projects/quiz-app-demo.mp4",
 };
@@ -184,7 +185,7 @@ export const PROJECTS = [
     thumbnailKey: "sehatsathi" as const,
     githubKey: "sehatsathi" as const,
     featured: true,
-    hasVideo: false,
+    hasVideo: true,
   },
   {
     id: 4,
