@@ -26,8 +26,8 @@ export default function AboutSection() {
                         <Image
                             src={ABOUT_ME.photo}
                             alt={ABOUT_ME.photoAlt}
-                            width={1050}
-                            height={1323}
+                            width={1085}
+                            height={1450}
                             priority
                             className="w-full h-auto object-cover"
                             sizes="(max-width: 640px) 17rem, (max-width: 1024px) 20rem, 24rem"
